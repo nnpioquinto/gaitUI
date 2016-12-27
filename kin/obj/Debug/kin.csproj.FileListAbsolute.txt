@@ -1,0 +1,16 @@
+C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\obj\Debug\kin.editRecord.resources
+C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\obj\Debug\kin.gaitAnalysis.resources
+C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\obj\Debug\kin.loginForm.resources
+C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\obj\Debug\kin.Menu.resources
+C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\obj\Debug\kin.newRecord.resources
+C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\obj\Debug\kin.Properties.Resources.resources
+C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\obj\Debug\kin.viewPtRec.resources
+C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\obj\Debug\kin.csproj.GenerateResource.Cache
+C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\bin\Debug\kin.exe.config
+C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\bin\Debug\kin.exe
+C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\bin\Debug\kin.pdb
+C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\bin\Debug\Microsoft.Kinect.dll
+C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\bin\Debug\Microsoft.Kinect.xml
+C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\obj\Debug\kin.exe
+C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\obj\Debug\kin.pdb
+C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\obj\Debug\kin.csprojResolveAssemblyReference.cache
