@@ -14,3 +14,17 @@ C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\bin\Debug\Microsoft
 C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\obj\Debug\kin.exe
 C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\obj\Debug\kin.pdb
 C:\Users\Ninna\documents\visual studio 2015\Projects\kin\kin\obj\Debug\kin.csprojResolveAssemblyReference.cache
+C:\Users\Jan\Documents\GitHub\gaitUI\kin\bin\Debug\kin.exe.config
+C:\Users\Jan\Documents\GitHub\gaitUI\kin\obj\Debug\kin.exe
+C:\Users\Jan\Documents\GitHub\gaitUI\kin\obj\Debug\kin.pdb
+C:\Users\Jan\Documents\GitHub\gaitUI\kin\bin\Debug\kin.exe
+C:\Users\Jan\Documents\GitHub\gaitUI\kin\bin\Debug\kin.pdb
+C:\Users\Jan\Documents\GitHub\gaitUI\kin\obj\Debug\kin.csprojResolveAssemblyReference.cache
+C:\Users\Jan\Documents\GitHub\gaitUI\kin\obj\Debug\kin.editRecord.resources
+C:\Users\Jan\Documents\GitHub\gaitUI\kin\obj\Debug\kin.gaitAnalysis.resources
+C:\Users\Jan\Documents\GitHub\gaitUI\kin\obj\Debug\kin.loginForm.resources
+C:\Users\Jan\Documents\GitHub\gaitUI\kin\obj\Debug\kin.Menu.resources
+C:\Users\Jan\Documents\GitHub\gaitUI\kin\obj\Debug\kin.newRecord.resources
+C:\Users\Jan\Documents\GitHub\gaitUI\kin\obj\Debug\kin.Properties.Resources.resources
+C:\Users\Jan\Documents\GitHub\gaitUI\kin\obj\Debug\kin.viewPtRec.resources
+C:\Users\Jan\Documents\GitHub\gaitUI\kin\obj\Debug\kin.csproj.GenerateResource.Cache

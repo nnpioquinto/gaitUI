@@ -17,6 +17,7 @@ namespace kin
         static KinectSensor sensor;
         Skeleton skeleton;
         Graphics graphicsFromBtmp;
+        static SystemDB sysDB;
 
         int frame = 0;
         DateTime startTime;
@@ -583,6 +584,16 @@ namespace kin
                 statusLbl.Text = "No Skeleton detected";
                 statusLbl.ForeColor = Color.Red;
             }
+        }
+
+        private void stopBtn_Click(object sender, EventArgs e)
+        {
+            sysDB = new SystemDB(); //values of gender and age should come from db
+            String output = "";
+            output += String.Format(sysDB.AnalyzeData("spd", 18, 'M', strideVelocity) + "\n");
+            output += String.Format(sysDB.AnalyzeData("freq", 18, 'M', stepFrequency) + "\n");
+            output += String.Format(sysDB.AnalyzeData("len", 18, 'M', stepLength) + "\n");
+            MessageBox.Show(output);
         }
     }
 }
