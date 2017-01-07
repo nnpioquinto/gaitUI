@@ -135,7 +135,11 @@ namespace kin
                     skeletonFrame.CopySkeletonDataTo(this.skeletons);
                     this.skeleton = this.skeletons.Where(s => s.TrackingState == SkeletonTrackingState.Tracked).FirstOrDefault();
                     floorPlane = skeletonFrame.FloorClipPlane;
-                    
+                    //
+                    if (skeleton != null)
+                    {
+                        captureValues(skeleton);
+                    }
                     DrawStandingSkeletons(skeletons);
                 }
                 else
@@ -153,8 +157,21 @@ namespace kin
             {
                 if (skel.TrackingState == SkeletonTrackingState.Tracked)
                 {
+                    //graphicsFromBtmp.Clear(Color.Transparent);
+
+                    graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.AnkleRight].Position), SkeletonPointToScreen(skel.Joints[JointType.FootRight].Position));
+                    graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.KneeRight].Position), SkeletonPointToScreen(skel.Joints[JointType.AnkleRight].Position));
+                    graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.HipRight].Position), SkeletonPointToScreen(skel.Joints[JointType.KneeRight].Position));
+
+                    graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.AnkleLeft].Position), SkeletonPointToScreen(skel.Joints[JointType.FootLeft].Position));
+                    graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.KneeLeft].Position), SkeletonPointToScreen(skel.Joints[JointType.AnkleLeft].Position));
+                    graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.HipLeft].Position), SkeletonPointToScreen(skel.Joints[JointType.KneeLeft].Position));
+
+                    graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.HipCenter].Position), SkeletonPointToScreen(skel.Joints[JointType.HipRight].Position));
+                    graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.HipCenter].Position), SkeletonPointToScreen(skel.Joints[JointType.HipLeft].Position));
+
                     //torso
-                    this.DrawBone(skel,  JointType.Head, JointType.ShoulderCenter);
+                    /*this.DrawBone(skel,  JointType.Head, JointType.ShoulderCenter);
                     this.DrawBone(skel,  JointType.ShoulderCenter, JointType.ShoulderLeft);
                     this.DrawBone(skel,  JointType.ShoulderCenter, JointType.ShoulderRight);
                     this.DrawBone(skel,  JointType.ShoulderCenter, JointType.Spine);
@@ -179,7 +196,9 @@ namespace kin
                     // Right Leg
                     this.DrawBone(skel, JointType.HipRight, JointType.KneeRight);
                     this.DrawBone(skel, JointType.KneeRight, JointType.AnkleRight);
-                    this.DrawBone(skel, JointType.AnkleRight, JointType.FootRight);
+                    this.DrawBone(skel, JointType.AnkleRight, JointType.FootRight);*/
+
+                    //graphicsFromBtmp = videoBox.CreateGraphics();
                 }
             }
         }
@@ -191,10 +210,17 @@ namespace kin
 
             if (joint0.TrackingState == JointTrackingState.Tracked && joint1.TrackingState == JointTrackingState.Tracked)
             {
-                graphicsFromBtmp = videoBox.CreateGraphics();
-                    graphicsFromBtmp.Clear(Color.Transparent);
-                    Pen p = new Pen(Color.Blue, 2.0f);
-                    graphicsFromBtmp.DrawLine(p, SkeletonPointToScreen(joint0.Position), SkeletonPointToScreen(joint1.Position));
+                    //graphicsFromBtmp.Clear(Color.Transparent);
+                graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.AnkleRight].Position), SkeletonPointToScreen(skel.Joints[JointType.FootRight].Position));
+                graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.KneeRight].Position), SkeletonPointToScreen(skel.Joints[JointType.AnkleRight].Position));
+                graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.HipRight].Position), SkeletonPointToScreen(skel.Joints[JointType.KneeRight].Position));
+
+                graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.AnkleLeft].Position), SkeletonPointToScreen(skel.Joints[JointType.FootLeft].Position));
+                graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.KneeLeft].Position), SkeletonPointToScreen(skel.Joints[JointType.AnkleLeft].Position));
+                graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.HipLeft].Position), SkeletonPointToScreen(skel.Joints[JointType.KneeLeft].Position));
+
+                graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.HipCenter].Position), SkeletonPointToScreen(skel.Joints[JointType.HipRight].Position));
+                graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.HipCenter].Position), SkeletonPointToScreen(skel.Joints[JointType.HipLeft].Position));
             }
         }
 
