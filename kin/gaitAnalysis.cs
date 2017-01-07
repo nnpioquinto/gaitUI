@@ -577,7 +577,9 @@ namespace kin
             Console.WriteLine("Start");
             if (skeleton != null)
             {
+                MessageBox.Show("start capture");
                 captureValues(skeleton);
+                MessageBox.Show("Analyzing");
             }
             else
             {
@@ -589,10 +591,13 @@ namespace kin
         private void stopBtn_Click(object sender, EventArgs e)
         {
             sysDB = new SystemDB(); //values of gender and age should come from db
+            int age = sysDB.getAge(1);
+            char gender = sysDB.getGender(1);
+            
             String output = "";
-            output += String.Format(sysDB.AnalyzeData("spd", 18, 'M', strideVelocity) + "\n");
-            output += String.Format(sysDB.AnalyzeData("freq", 18, 'M', stepFrequency) + "\n");
-            output += String.Format(sysDB.AnalyzeData("len", 18, 'M', stepLength) + "\n");
+            output += String.Format(sysDB.AnalyzeData("spd", age, gender, strideVelocity) + "\n" + "Your stride velocity is: " + strideVelocity + " cm/s\n");
+            output += String.Format(sysDB.AnalyzeData("freq", age, gender, stepFrequency) + "\n" + "Your step frequency is: " + stepFrequency + " step/seconds\n");
+            output += String.Format(sysDB.AnalyzeData("len", age, gender, stepLength) + "\n"  + "Your step length is: " + stepLength + " cm\n");
             MessageBox.Show(output);
         }
     }

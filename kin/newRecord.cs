@@ -33,6 +33,8 @@ namespace kin
             string city = city_box.Text;
             string email = email_box.Text;
             int contactNo = -1;
+            SystemDB sysDB = new SystemDB();
+
             try
             {
                 contactNo = Int32.Parse(contactNo_box.Text);
@@ -58,8 +60,10 @@ namespace kin
                 DialogResult result = MessageBox.Show("Are you sure to create new record?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if(result == DialogResult.Yes)
                 {
-                    /*Boolean success = Db.createPatient(fName, mName, lName, gender, birthday, address,city,email,contactNo,occu);
-                        if (success) 
+
+                   // Boolean success = sysDB.createPatient(fName, mName, lName, gender, birthday, address, city, email, contactNo, occu);
+                    Boolean success = sysDB.createPatient(fName, mName, lName, gender, birthday, address, city, email, contactNo, occu);    
+                    if (success) 
                         { 
                             MessageBox.Show("Record Saved!", "Success");
                             result = MessageBox.Show("Create Record again?\n(Clicking No will redirect you to the Main Menu", "Again?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -70,7 +74,7 @@ namespace kin
                                 this.Dispose();
                             }
                         }
-                    */
+                    
                 }
             }
 
