@@ -620,11 +620,17 @@ namespace kin
             int age = sysDB.getAge(1);
             char gender = sysDB.getGender(1);
             
-            String output = "";
-            output += String.Format(sysDB.AnalyzeData("spd", age, gender, strideVelocity) + "\n" + "Your stride velocity is: " + strideVelocity + " cm/s\n");
-            output += String.Format(sysDB.AnalyzeData("freq", age, gender, stepFrequency) + "\n" + "Your step frequency is: " + stepFrequency + " step/seconds\n");
-            output += String.Format(sysDB.AnalyzeData("len", age, gender, stepLength) + "\n"  + "Your step length is: " + stepLength + " cm\n");
+            String output = "", aOutput = "";
+            output += String.Format("Normal stride velocity range: " + sysDB.spd_lower + "cm/s - " + sysDB.spd_upper + "cm/s\nActual stride velocity is: " + strideVelocity + " cm/s\n\n");
+            output += String.Format("Normal step frequency range: " + sysDB.freq_lower + "steps/second - " + sysDB.freq_upper + "steps/second\nActual step frequency is: " + stepFrequency + " steps/second\n\n");
+            output += String.Format("Normal step length range: " + sysDB.len_lower + "cm - " + sysDB.len_upper + "cm\nActual step length is: " + stepLength + " cm\n\n");
+            aOutput += ("Analysis: \n");
+            aOutput += sysDB.AnalyzeData("spd", age, gender, strideVelocity);
+            aOutput += sysDB.AnalyzeData("freq", age, gender, stepFrequency);
+            aOutput += sysDB.AnalyzeData("len", age, gender, stepLength);
+
             MessageBox.Show(output);
+            MessageBox.Show(aOutput);
         }
     }
 }

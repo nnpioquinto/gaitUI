@@ -13,6 +13,8 @@ namespace kin
         MySqlCommand cmd;
         MySqlDataReader rdr;
         static string connString, query;
+        public double spd_upper = 0.00, spd_lower = 0.00, freq_upper = 0.00, freq_lower = 0.00, len_upper = 0.00, len_lower = 0.00;
+
         public SystemDB()
         {
             connString = "server=localhost;uid=root;password=;database=gaitsystem;";
@@ -50,6 +52,13 @@ namespace kin
             else if (strideVelocity > ci_upper)
                 output = "The " + varName + " is greater than the normal range.";
             dbconn.Close();
+            switch (type)
+            {
+                case "spd": spd_lower = ci_lower; spd_upper = ci_upper; break;
+                case "len": len_lower = ci_lower; len_upper = ci_upper; break;
+                case "freq": freq_lower = ci_lower; freq_upper = ci_upper; break;
+                default: break;
+            }
             return output;
         }
 
@@ -91,7 +100,7 @@ namespace kin
             dbconn.Open();
             try
             {
-                query = String.Format("INSERT INTO patient VALUES ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}) ", fName, mName, lName, gender, address, city, email, contactNo, birthday, occu);
+                query = String.Format("INSERT INTO patient VALUES (nulll, '{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}') ", fName, mName, lName, gender, address, city, email, contactNo, birthday, occu);
                 cmd = new MySqlCommand(query, dbconn);
                 cmd.ExecuteNonQuery();
             }
