@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using Microsoft.Kinect;
 using System.Drawing.Imaging;
@@ -28,14 +28,14 @@ namespace kin
 
         //Gait Parameters
         double cadence = 0;             //What is this?
-        public double stepLength = 0;          //Done
-        double stepTime = 0;            //Done
-        double stepWidth = 0;           //What is this?
-        public double stepFrequency = 0;       //Done
-        double stanceTime = 0;          //Done
-        double strideLength = 0;        //Done
+        public double stepLength = 0;          //Done               //
+        double stepTime = 0;            //Done          
+        double stepWidth = 0;           //What is this? 
+        public double stepFrequency = 0;       //Done              //
+        double stanceTime = 0;          //Done                     //
+        double strideLength = 0;        //Done                     //
         public double strideVelocity = 0;      //Done (Edit)
-        double swingTime = 0;           //Done
+        double swingTime = 0;           //Done                     //
 
         double totalDistance = 0;
         double[] initialPoint = new double[3];
@@ -127,6 +127,10 @@ namespace kin
 
                 if (skeletonFrame != null)
                 {
+                                                                    //Added
+                    skelLbl.ForeColor = Color.Green;
+                    skelLbl.Text = "Skeleton: Detected";
+                                                                    //end;
                     if (this.skeletons == null)
                     {
                         this.skeletons = new Skeleton[skeletonFrame.SkeletonArrayLength];
@@ -135,59 +139,54 @@ namespace kin
                     skeletonFrame.CopySkeletonDataTo(this.skeletons);
                     this.skeleton = this.skeletons.Where(s => s.TrackingState == SkeletonTrackingState.Tracked).FirstOrDefault();
                     floorPlane = skeletonFrame.FloorClipPlane;
-                    //
+                    
                     if (skeleton != null)
                     {
-                        captureValues(skeleton);
+                        //gaitThread = new Thread(captureValues);
+                        captureValues();
+                    }
+                    else
+                    {
+                        skelLbl.ForeColor = Color.Red;
+                        skelLbl.Text = "No skeleton detected!";
                     }
                     DrawStandingSkeletons(skeletons);
                 }
                 else
                 {
-                    statusLbl.ForeColor = Color.Red;
-                    statusLbl.Text = "No skeleton detected!";
+                    skelLbl.ForeColor = Color.Red;
+                    skelLbl.Text = "No skeleton detected!";
                 }
             }
         }
 
         private void DrawStandingSkeletons(Skeleton[] skeletons)
         {
-            //Console.Write("DETECT\n");
+
             foreach (Skeleton skel in skeletons)
             {
                 if (skel.TrackingState == SkeletonTrackingState.Tracked)
-                {
-                    //graphicsFromBtmp.Clear(Color.Transparent);
-
-                    graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.AnkleRight].Position), SkeletonPointToScreen(skel.Joints[JointType.FootRight].Position));
-                    graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.KneeRight].Position), SkeletonPointToScreen(skel.Joints[JointType.AnkleRight].Position));
-                    graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.HipRight].Position), SkeletonPointToScreen(skel.Joints[JointType.KneeRight].Position));
-
-                    graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.AnkleLeft].Position), SkeletonPointToScreen(skel.Joints[JointType.FootLeft].Position));
-                    graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.KneeLeft].Position), SkeletonPointToScreen(skel.Joints[JointType.AnkleLeft].Position));
-                    graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.HipLeft].Position), SkeletonPointToScreen(skel.Joints[JointType.KneeLeft].Position));
-
-                    graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.HipCenter].Position), SkeletonPointToScreen(skel.Joints[JointType.HipRight].Position));
-                    graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.HipCenter].Position), SkeletonPointToScreen(skel.Joints[JointType.HipLeft].Position));
+                {                                                       //Replaced with old code.
 
                     //torso
-                    /*this.DrawBone(skel,  JointType.Head, JointType.ShoulderCenter);
-                    this.DrawBone(skel,  JointType.ShoulderCenter, JointType.ShoulderLeft);
-                    this.DrawBone(skel,  JointType.ShoulderCenter, JointType.ShoulderRight);
-                    this.DrawBone(skel,  JointType.ShoulderCenter, JointType.Spine);
-                    this.DrawBone(skel,  JointType.Spine, JointType.HipCenter);
-                    this.DrawBone(skel,  JointType.HipCenter, JointType.HipLeft);
-                    this.DrawBone(skel,  JointType.HipCenter, JointType.HipRight);
+                    // this.DrawBone(skel,  JointType.Head, JointType.ShoulderCenter);
+                    this.DrawBone(skel, JointType.ShoulderCenter, JointType.ShoulderLeft);
+                    this.DrawBone(skel, JointType.ShoulderCenter, JointType.ShoulderRight);
+                    this.DrawBone(skel, JointType.ShoulderCenter, JointType.Spine);
+                    this.DrawBone(skel, JointType.Spine, JointType.HipCenter);
+                    this.DrawBone(skel, JointType.HipCenter, JointType.HipLeft);
+                    this.DrawBone(skel, JointType.HipCenter, JointType.HipRight);
 
                     // Left Arm
-                    this.DrawBone(skeleton,  JointType.ShoulderLeft, JointType.ElbowLeft);
-                    this.DrawBone(skeleton,  JointType.ElbowLeft, JointType.WristLeft);
-                    this.DrawBone(skeleton,  JointType.WristLeft, JointType.HandLeft);
+                    this.DrawBone(skeleton, JointType.ShoulderLeft, JointType.ElbowLeft);
+                    this.DrawBone(skeleton, JointType.ElbowLeft, JointType.WristLeft);
+                    this.DrawBone(skeleton, JointType.WristLeft, JointType.HandLeft);
 
                     // Right Arm
-                    this.DrawBone(skeleton,  JointType.ShoulderRight, JointType.ElbowRight);
-                    this.DrawBone(skeleton,  JointType.ElbowRight, JointType.WristRight);
-                    this.DrawBone(skeleton,  JointType.WristRight, JointType.HandRight);
+                    this.DrawBone(skeleton, JointType.ShoulderRight, JointType.ElbowRight);
+                    this.DrawBone(skeleton, JointType.ElbowRight, JointType.WristRight);
+                    this.DrawBone(skeleton, JointType.WristRight, JointType.HandRight);
+
                     //Left Leg
                     this.DrawBone(skel, JointType.HipLeft, JointType.KneeLeft);
                     this.DrawBone(skel, JointType.KneeLeft, JointType.AnkleLeft);
@@ -196,9 +195,7 @@ namespace kin
                     // Right Leg
                     this.DrawBone(skel, JointType.HipRight, JointType.KneeRight);
                     this.DrawBone(skel, JointType.KneeRight, JointType.AnkleRight);
-                    this.DrawBone(skel, JointType.AnkleRight, JointType.FootRight);*/
-
-                    //graphicsFromBtmp = videoBox.CreateGraphics();
+                    this.DrawBone(skel, JointType.AnkleRight, JointType.FootRight);
                 }
             }
         }
@@ -210,17 +207,9 @@ namespace kin
 
             if (joint0.TrackingState == JointTrackingState.Tracked && joint1.TrackingState == JointTrackingState.Tracked)
             {
-                    //graphicsFromBtmp.Clear(Color.Transparent);
-                graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.AnkleRight].Position), SkeletonPointToScreen(skel.Joints[JointType.FootRight].Position));
-                graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.KneeRight].Position), SkeletonPointToScreen(skel.Joints[JointType.AnkleRight].Position));
-                graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.HipRight].Position), SkeletonPointToScreen(skel.Joints[JointType.KneeRight].Position));
-
-                graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.AnkleLeft].Position), SkeletonPointToScreen(skel.Joints[JointType.FootLeft].Position));
-                graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.KneeLeft].Position), SkeletonPointToScreen(skel.Joints[JointType.AnkleLeft].Position));
-                graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.HipLeft].Position), SkeletonPointToScreen(skel.Joints[JointType.KneeLeft].Position));
-
-                graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.HipCenter].Position), SkeletonPointToScreen(skel.Joints[JointType.HipRight].Position));
-                graphicsFromBtmp.DrawLine(new Pen(Color.Blue, 2.0f), SkeletonPointToScreen(skel.Joints[JointType.HipCenter].Position), SkeletonPointToScreen(skel.Joints[JointType.HipLeft].Position));
+                //graphicsFromBtmp.Clear(Color.Transparent);                //Replaced with old code -N
+                graphicsFromBtmp = videoBox.CreateGraphics();
+                graphicsFromBtmp.DrawLine(new Pen(Color.Green, 5.0f), SkeletonPointToScreen(joint0.Position), SkeletonPointToScreen(joint1.Position));
             }
         }
 
@@ -230,7 +219,7 @@ namespace kin
             return new Point(depthPoint.X, depthPoint.Y);
         }
 
-        private void captureValues(Skeleton skeleton)
+        private void captureValues()
         {
             {
                 Joint kneeLeft = skeleton.Joints[JointType.KneeLeft];
@@ -245,7 +234,7 @@ namespace kin
                 {
                     time = DateTime.Now;
                     timeInSecond = time.Minute * 60 + time.Second;
-                    timeLbl.Text = "Time: " + timeInSecond +" s";
+                    //timeLbl.Text = "Time: " + timeInSecond +" s";
 
                     float leftFootFloorDistance = (float)Math.Round(Math.Abs((floorPlane.Item1 * footLeft.Position.X) + (floorPlane.Item2 * footLeft.Position.Y) + (floorPlane.Item3 * footLeft.Position.Z) + floorPlane.Item4) / Math.Sqrt(Math.Pow(footLeft.Position.X, 2) + Math.Pow(footLeft.Position.Y, 2) + Math.Pow(footLeft.Position.Z, 2)) * 1000, 2);
                     float rightFootFloorDistance = (float)Math.Round(Math.Abs((floorPlane.Item1 * footRight.Position.X) + (floorPlane.Item2 * footRight.Position.Y) + (floorPlane.Item3 * footRight.Position.Z) + floorPlane.Item4) / Math.Sqrt(Math.Pow(footRight.Position.X, 2) + Math.Pow(footRight.Position.Y, 2) + Math.Pow(footRight.Position.Z, 2)) * 1000, 2);
@@ -303,17 +292,30 @@ namespace kin
                     {
                         //Console.Clear();
                         Console.ForegroundColor = ConsoleColor.Red;
-                        //Console.BackgroundColor = ConsoleColor.Red;
+                        feetLbl.ForeColor = Color.Black;
+                        feetLbl.Text = "Feet: Both on floor";
                     }
                     else
                     {
                         //Console.Clear();
                         if (!leftOnFloor && !rightOnFloor)
+                        {
                             Console.ForegroundColor = ConsoleColor.White;
+                            feetLbl.ForeColor = Color.Red;
+                            feetLbl.Text = "Feet: Both on NOT floor";
+                        }
                         else if (!leftOnFloor)
+                        {
                             Console.ForegroundColor = ConsoleColor.Blue;
+                            feetLbl.ForeColor = Color.Blue;
+                            feetLbl.Text = "Feet: Right foot up";
+                        }
                         else if (!rightOnFloor)
+                        {
                             Console.ForegroundColor = ConsoleColor.Green;
+                            feetLbl.ForeColor = Color.Green;
+                            feetLbl.Text = "Feet: Left foot up";
+                        }
                         //Console.BackgroundColor = ConsoleColor.Green;
                     }
 
@@ -337,6 +339,9 @@ namespace kin
                         totalTime = currentTime - initialTime;
 
                         strideVelocity = Math.Round(totalDistance / totalTime, 2);
+
+
+                        srVeloLbl.Text = "Stride Velocity: " + strideVelocity;          //added -n
                     }
 
                     //Step Length and Step Frequency (Right Foot)
@@ -433,6 +438,9 @@ namespace kin
                             terminalStepTime = 0;
                         }
                     }
+                    sLenLbl.Text = "Step Length: " + stepLength;          //added 
+                    stepLbl.Text = "Steps: " + stepCounter;              //added 
+                    sFreqLbl.Text = "Step Frequency: " + stepFrequency;  //added 
 
                     //Stride Length (Left Foot)
                     if (stance && strideProcessingLeft)
@@ -450,6 +458,8 @@ namespace kin
                         strideLengthTotal += Math.Round(Math.Sqrt(Math.Pow(initialStridePoint[1, 0] - terminalStridePoint[1, 0], 2) + Math.Pow(initialStridePoint[1, 1] - terminalStridePoint[1, 1], 2) + Math.Pow(initialStridePoint[1, 2] - terminalStridePoint[1, 2], 2)) * 100, 2);
                         strideLength = Math.Round(strideLengthTotal / strideCounter, 2);
                     }
+
+                    srLenLbl.Text = "Stride Length: " + strideLength;
 
                     //Stride Length (Right Foot)
                     /*if (leftOnFloor)
@@ -523,6 +533,9 @@ namespace kin
                             terminalSwingTime = timeInSecond;
                     }
 
+                    StanceTimeLbl.Text = "Stance Time: " + stanceTime;
+                    swingTimeLbl.Text = "Swing Time: " + swingTime;
+
                     if (frame % 300 == 9)
                         //Console.Clear();
 
@@ -573,8 +586,6 @@ namespace kin
 
             graphicsFromBtmp = Graphics.FromImage(bitmapFrame);
         }
-
-
         private static Bitmap ColorImageFrameToBitmap(ColorImageFrame colorFrame)
         {
             byte[] pixelBuffer = new byte[colorFrame.PixelDataLength];
@@ -598,24 +609,26 @@ namespace kin
             return bitmapFrame;
         }
 
+        Thread gaitThread;
+
         private void startBtn_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Start");
+         //   Console.WriteLine("Start");
             if (skeleton != null)
             {
-                MessageBox.Show("start capture");
-                captureValues(skeleton);
-                MessageBox.Show("Analyzing");
+             //   gaitThread = new Thread(captureValues);
+               // gaitThread.Start();
             }
             else
             {
-                statusLbl.Text = "No Skeleton detected";
-                statusLbl.ForeColor = Color.Red;
+                skelLbl.Text = "Skeleton: Not Detected";
+                skelLbl.ForeColor = Color.Red;
             }
         }
 
         private void stopBtn_Click(object sender, EventArgs e)
         {
+            //gaithread.Abort();
             sysDB = new SystemDB(); //values of gender and age should come from db
             int age = sysDB.getAge(1);
             char gender = sysDB.getGender(1);
@@ -632,5 +645,6 @@ namespace kin
             MessageBox.Show(output);
             MessageBox.Show(aOutput);
         }
+
     }
 }
