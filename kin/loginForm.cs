@@ -22,20 +22,19 @@ namespace kin
             string username = uNameTxtBox.Text;
             string pw = pwTxtBox.Text;
 
-            /*Boolean valid = DB.loginCheck(username,pw);
-             *if(valid){
-             *  this.Close();
-             *  Menu menu = new Menu();
-             *  menu.Show();
-             *}
-             * else{
-             *  errorLbl.Text("Wrong username or password!");
-             *  }
-            */
-            Menu menu = new Menu();
-            this.Hide();
-            menu.ShowDialog();
-            this.Close();
+            SystemDB sysDB = new SystemDB();
+            Boolean valid = sysDB.loginCheck(username,pw);
+            if (valid)
+            {
+                Menu menu = new Menu();
+                this.Hide();
+                menu.ShowDialog();
+            }
+            else
+            {
+                errorLbl.Text = "Wrong username or password!";
+            }
+           
         }
     }
 }

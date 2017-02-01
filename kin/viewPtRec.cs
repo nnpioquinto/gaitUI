@@ -17,6 +17,12 @@ namespace kin
         {
             InitializeComponent();
             this.menu = menu;
+
+            SystemDB sysdb = new SystemDB();
+            BindingSource bindSource = new BindingSource();
+            dataGrid.DataSource = bindSource;
+            bindSource.DataSource = sysdb.retrieveData();
+            
         }
 
         private void backBtn_Click(object sender, EventArgs e)
@@ -27,7 +33,7 @@ namespace kin
 
         private void viewHist_btn_Click(object sender, EventArgs e)
         {
-            int ptID = (int)dataGrid.SelectedRows[0].Cells["patient_ID"].Value;
+            int ptID = (int)dataGrid.SelectedRows[0].Cells["patientID"].Value;
             //PtHistory ptHist = new PtHistory(ptID, this);
             this.Hide();
             //ptHist.ShowDialog();
@@ -35,7 +41,7 @@ namespace kin
 
         private void editPt_Btn_Click(object sender, EventArgs e)
         {
-            int ptID = (int)dataGrid.SelectedRows[0].Cells["patient_ID"].Value;
+            int ptID = (int)dataGrid.SelectedRows[0].Cells["patientID"].Value;
             editRecord editRec = new editRecord(ptID, this);
             this.Hide();
             editRec.ShowDialog();
@@ -43,10 +49,11 @@ namespace kin
 
         private void startBtn_Click(object sender, EventArgs e)
         {
-            int ptID = (int)dataGrid.SelectedRows[0].Cells["patient_ID"].Value;
-          //  gaitAnalysis gait = new gaitAnalysis(ptID, this);
+            int ptID = (int)dataGrid.SelectedRows[0].Cells["patientID"].Value;
+            
+            gaitAnalysis gait = new gaitAnalysis(ptID);
             this.Hide();
-            //gait.ShowDialog();
+            gait.ShowDialog();
         }
         
     }

@@ -16,10 +16,15 @@ namespace kin
     {
         Menu menu;
         Boolean invalid = false;
+
         public newRecord(Menu menu)
         {
             InitializeComponent();
             this.menu = menu;
+        }
+        public newRecord()
+        {
+            InitializeComponent();
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
@@ -27,26 +32,18 @@ namespace kin
             string fName = fName_box.Text;
             string mName = mName_box.Text;
             string lName = lName_box.Text;
-            string gender = gender_cbox.SelectedValue.ToString();
+            string gender = gender_cbox.SelectedItem.ToString();
             string birthday = birthday_Box.Value.ToShortDateString();
             string address = streetAdd_box.Text;
             string city = city_box.Text;
             string email = email_box.Text;
-            int contactNo = -1;
-            SystemDB sysDB = new SystemDB();
-
-            try
-            {
-                contactNo = Int32.Parse(contactNo_box.Text);
-            }
-            catch(Exception xe)
-            {
-                Console.Write(xe.ToString());
-            }
+            string contactNo = contactNo_box.Text;
             string occu = occu_box.Text;
 
+            SystemDB sysDB = new SystemDB();
+            
             if(fName == "" || mName == "" || lName == "" || gender == "" || birthday =="" ||address =="" || city == ""
-                || email == "" || contactNo == -1 || occu == "")
+                || email == "" || contactNo == "" || occu == "")
             {
                 errorLbl.Text= "Please fill out all fields.";
             }
@@ -60,8 +57,6 @@ namespace kin
                 DialogResult result = MessageBox.Show("Are you sure to create new record?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if(result == DialogResult.Yes)
                 {
-
-                   // Boolean success = sysDB.createPatient(fName, mName, lName, gender, birthday, address, city, email, contactNo, occu);
                     Boolean success = sysDB.createPatient(fName, mName, lName, gender, birthday, address, city, email, contactNo, occu);    
                     if (success) 
                         { 
@@ -134,7 +129,7 @@ namespace kin
         {
             resetBoxes();
         }
-        private void resetBoxes()
+        public void resetBoxes()
         {
             fName_box.Text = "";
             mName_box.Text = "";

@@ -84,9 +84,12 @@ namespace kin
         private Skeleton[] skeletons = null;
         Tuple<float, float, float, float> floorPlane;
 
-        public gaitAnalysis()
+        int ptID;
+
+        public gaitAnalysis(int ptID)
         {
             InitializeComponent();
+            this.ptID = ptID;
             sensor = KinectSensor.KinectSensors.Where(s => s.Status == KinectStatus.Connected).FirstOrDefault();
         }
        
@@ -630,8 +633,8 @@ namespace kin
         {
             //gaithread.Abort();
             sysDB = new SystemDB(); //values of gender and age should come from db
-            int age = sysDB.getAge(1);
-            char gender = sysDB.getGender(1);
+            int age = sysDB.getAge(ptID);
+            char gender = sysDB.getGender(ptID);
             
             String output = "", aOutput = "";
             output += String.Format("Normal stride velocity range: " + sysDB.spd_lower + "cm/s - " + sysDB.spd_upper + "cm/s\nActual stride velocity is: " + strideVelocity + " cm/s\n\n");

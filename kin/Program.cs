@@ -16,7 +16,7 @@ namespace kin
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new gaitAnalysis());
+            Application.Run(new loginForm());
         }
     }
 }
