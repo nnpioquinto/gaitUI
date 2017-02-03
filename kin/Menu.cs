@@ -20,15 +20,17 @@ namespace kin
         private void createPtBtn_Click(object sender, EventArgs e)
         {
             newRecord newRec = new newRecord(this);
+            newRec.Show();
             this.Hide();
-            newRec.ShowDialog();
         }
 
         private void viewPtRecBtn_Click(object sender, EventArgs e)
         {
-            viewPtRec viewRec = new viewPtRec(this);
+            viewPtRec viewRec = new viewPtRec();
+
+            viewRec.Show();
             this.Hide();
-            viewRec.ShowDialog();
+            
         }
     }
 }

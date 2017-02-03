@@ -46,3 +46,4 @@ C:\Users\Ninna\Documents\GitHub\gaitUI\kin\obj\Debug\kin.Properties.Resources.re
 C:\Users\Ninna\Documents\GitHub\gaitUI\kin\obj\Debug\kin.viewPtRec.resources
 C:\Users\Ninna\Documents\GitHub\gaitUI\kin\obj\Debug\kin.csproj.GenerateResource.Cache
 C:\Users\Ninna\Documents\GitHub\gaitUI\kin\obj\Debug\kin.gaitAnalysis.resources
+C:\Users\Ninna\Documents\GitHub\gaitUI\kin\obj\Debug\kin.PtHistory.resources

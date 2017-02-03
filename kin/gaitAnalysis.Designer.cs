@@ -35,7 +35,7 @@
             this.timeLbl = new System.Windows.Forms.Label();
             this.stepLbl = new System.Windows.Forms.Label();
             this.skelLbl = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.backBtn = new System.Windows.Forms.Button();
             this.feetLbl = new System.Windows.Forms.Label();
             this.sLenLbl = new System.Windows.Forms.Label();
             this.sFreqLbl = new System.Windows.Forms.Label();
@@ -121,15 +121,16 @@
             this.skelLbl.TabIndex = 6;
             this.skelLbl.Text = "Skeleton: ";
             // 
-            // button1
+            // backBtn
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(33, 525);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 36);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "back";
-            this.button1.UseVisualStyleBackColor = true;
+            this.backBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backBtn.Location = new System.Drawing.Point(33, 525);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(110, 36);
+            this.backBtn.TabIndex = 7;
+            this.backBtn.Text = "Back";
+            this.backBtn.UseVisualStyleBackColor = true;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
             // feetLbl
             // 
@@ -220,7 +221,7 @@
             this.Controls.Add(this.sFreqLbl);
             this.Controls.Add(this.sLenLbl);
             this.Controls.Add(this.feetLbl);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.backBtn);
             this.Controls.Add(this.skelLbl);
             this.Controls.Add(this.stepLbl);
             this.Controls.Add(this.timeLbl);
@@ -228,7 +229,9 @@
             this.Controls.Add(this.noKinectWarn);
             this.Controls.Add(this.startBtn);
             this.Controls.Add(this.videoBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "gaitAnalysis";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "gaitAnalysis";
             this.Load += new System.EventHandler(this.gaitAnalysis_Load);
             ((System.ComponentModel.ISupportInitialize)(this.videoBox)).EndInit();
@@ -246,7 +249,7 @@
         private System.Windows.Forms.Label timeLbl;
         private System.Windows.Forms.Label stepLbl;
         private System.Windows.Forms.Label skelLbl;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button backBtn;
         private System.Windows.Forms.Label feetLbl;
         private System.Windows.Forms.Label sLenLbl;
         private System.Windows.Forms.Label sFreqLbl;

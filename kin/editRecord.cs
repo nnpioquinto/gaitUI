@@ -45,11 +45,15 @@ namespace kin
 
         private void resetBtn_Click(object sender, EventArgs e)
         {
-            resetData();
+            DialogResult result = MessageBox.Show("Are you sure to reset data?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(result ==  DialogResult.Yes)
+                resetData();
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
+            checker check = new checker();
+
             string fName = fName_box.Text;
             string mName = mName_box.Text;
             string lName = lName_box.Text;
@@ -61,13 +65,12 @@ namespace kin
             string contactNo = contactNo_box.Text;
             string occu = occu_box.Text;
 
-            newRecord newRec = new newRecord();
             if (fName == "" || mName == "" || lName == "" || gender == "" || birthday == "" || address == "" || city == ""
                 || email == "" || contactNo == "" || occu == "")
             {
                 errorLbl.Text = "Please fill out all fields.";
             }
-            else if (!newRec.IsValidEmail(email))
+            else if (!check.IsValidEmail(email))
             {
                 errorLbl.Text = "Please enter a valid email address";
                 email_box.Focus();
@@ -81,13 +84,14 @@ namespace kin
                     if (success)
                     {
                         MessageBox.Show("Record Saved!", "Success");
-                        result = MessageBox.Show("Create Record again?\n(Clicking No will redirect you to the Main Menu", "Again?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        result = MessageBox.Show("Are there any more changes?\n(Clicking No will redirect you back to records)", "Again?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.Yes)
                             resetData();
                         else
                         {
-                            //menu.Show();
-                            //this.Dispose();
+                            view = new viewPtRec();
+                            view.Show();
+                            this.Dispose();
                         }
                     }
 
@@ -116,5 +120,7 @@ namespace kin
             contactNo_box.Text = contactNo;
             occu_box.Text = occu;
         }
+        
     }
+    
 }

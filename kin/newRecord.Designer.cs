@@ -322,6 +322,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "newRecord";
             this.Text = "Create New Record";
             this.ResumeLayout(false);

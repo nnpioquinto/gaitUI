@@ -61,6 +61,7 @@
             this.ClientSize = new System.Drawing.Size(429, 451);
             this.Controls.Add(this.viewPtRecBtn);
             this.Controls.Add(this.createPtBtn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Menu";
             this.Text = "Menu";
             this.ResumeLayout(false);

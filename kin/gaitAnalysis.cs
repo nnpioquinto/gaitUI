@@ -85,6 +85,7 @@ namespace kin
         Tuple<float, float, float, float> floorPlane;
 
         int ptID;
+        bool start = false;
 
         public gaitAnalysis(int ptID)
         {
@@ -130,10 +131,10 @@ namespace kin
 
                 if (skeletonFrame != null)
                 {
-                                                                    //Added
+                                                                    
                     skelLbl.ForeColor = Color.Green;
                     skelLbl.Text = "Skeleton: Detected";
-                                                                    //end;
+                                                                    
                     if (this.skeletons == null)
                     {
                         this.skeletons = new Skeleton[skeletonFrame.SkeletonArrayLength];
@@ -169,7 +170,7 @@ namespace kin
             foreach (Skeleton skel in skeletons)
             {
                 if (skel.TrackingState == SkeletonTrackingState.Tracked)
-                {                                                       //Replaced with old code.
+                {                                                       
 
                     //torso
                     // this.DrawBone(skel,  JointType.Head, JointType.ShoulderCenter);
@@ -210,7 +211,7 @@ namespace kin
 
             if (joint0.TrackingState == JointTrackingState.Tracked && joint1.TrackingState == JointTrackingState.Tracked)
             {
-                //graphicsFromBtmp.Clear(Color.Transparent);                //Replaced with old code -N
+                //graphicsFromBtmp.Clear(Color.Transparent);                
                 graphicsFromBtmp = videoBox.CreateGraphics();
                 graphicsFromBtmp.DrawLine(new Pen(Color.Green, 5.0f), SkeletonPointToScreen(joint0.Position), SkeletonPointToScreen(joint1.Position));
             }
@@ -224,6 +225,7 @@ namespace kin
 
         private void captureValues()
         {
+            if(start)
             {
                 Joint kneeLeft = skeleton.Joints[JointType.KneeLeft];
                 Joint kneeRight = skeleton.Joints[JointType.KneeRight];
@@ -619,7 +621,11 @@ namespace kin
          //   Console.WriteLine("Start");
             if (skeleton != null)
             {
-             //   gaitThread = new Thread(captureValues);
+                start = true;
+                startBtn.Enabled = false;
+                stopBtn.Enabled = true;
+
+               //   gaitThread = new Thread(captureValues);
                // gaitThread.Start();
             }
             else
@@ -632,6 +638,9 @@ namespace kin
         private void stopBtn_Click(object sender, EventArgs e)
         {
             //gaithread.Abort();
+            start = false;
+            stopBtn.Enabled = false;
+
             sysDB = new SystemDB(); //values of gender and age should come from db
             int age = sysDB.getAge(ptID);
             char gender = sysDB.getGender(ptID);
@@ -649,5 +658,17 @@ namespace kin
             MessageBox.Show(aOutput);
         }
 
+        private void backBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure to go back to records?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(result == DialogResult.Yes)
+            {
+                viewPtRec view = new viewPtRec();
+                view.Show();
+                this.Dispose();
+            }
+
+
+        }
     }
 }
