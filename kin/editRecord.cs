@@ -109,10 +109,9 @@ namespace kin
             lName_box.Text = lName;
             if (gender == "F")
                 gender_cbox.SelectedItem = "Female";
-            else if (gender == "M")
+            else 
                 gender_cbox.SelectedItem = "Male";
-            else
-                gender_cbox.SelectedItem = "Others";
+            
             //birthday_Box.Value.ToShortDateString() = 
             streetAdd_box.Text = address;
             city_box.Text = city;

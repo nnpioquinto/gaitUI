@@ -69,7 +69,8 @@ namespace kin
 
         public int getAge(int id)
         {
-            DateTime today = DateTime.Today, dateOfBirth=DateTime.Today;
+            DateTime today = DateTime.Today;
+            string dateOfBirth = "";
             dbconn.Open();
             query = String.Format("SELECT patient_DateOfBirth FROM patient WHERE patientID = {0};", id);
             cmd = new MySqlCommand(query, dbconn);
@@ -77,9 +78,11 @@ namespace kin
 
             while (rdr.Read())
             {
-                dateOfBirth = rdr.GetDateTime(0);
+                dateOfBirth = rdr.GetString(0);
             }
-            int age = (today.Year - dateOfBirth.Year);
+            int year = Int32.Parse(dateOfBirth.Substring(6));
+
+            int age = 0;
             dbconn.Close();
             return age;
         }
@@ -98,6 +101,23 @@ namespace kin
             }
             dbconn.Close();
             return gender;
+        }
+        public string getName(int id)
+        {
+            string name = "";
+            dbconn.Open();
+            query = String.Format("SELECT patient_FN, patient_MN, patient_LN FROM patient WHERE patientID = {0};", id);
+            cmd = new MySqlCommand(query, dbconn);
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                name = rdr.GetString(0);
+                name += " " + rdr.GetString(1);
+                name += " " + rdr.GetString(2);
+            }
+            dbconn.Close();
+            return name;
         }
 
         public bool createPatient(string fName, string mName, string lName, string gender, string birthday, string address, string city, string email, string contactNo, string occu)
@@ -156,6 +176,7 @@ namespace kin
                 DataTable table = new DataTable();
                 table.Locale = System.Globalization.CultureInfo.InvariantCulture;
                 dataAdapter.Fill(table);
+                dbconn.Close(); //DITO MO LAGAY TRY MO
                 return table;
             }
             catch (MySqlException e)
@@ -163,7 +184,7 @@ namespace kin
                 Console.Write("\n" + e);
                 return null;
             }
-        }
+                    }
 
         public void retrieveData(int id, out string fName, out string mName, out string lName, out string gender, out string birthday, out string address, out string city, out string email, out string contactNo, out string occu)
         {
@@ -210,15 +231,36 @@ namespace kin
                 query = String.Format("UPDATE patient SET patient_FN = '{0}', patient_MN = '{1}', patient_LN = '{2}', patient_gender = '{3}', patient_StreetAddress = '{4}', patient_City = '{5}', patient_email = '{6}', patient_contactNumber = '{7}', patient_DateOfBirth = '{8}', patient_occupation = '{9}' WHERE patientID = {10} ", fName, mName, lName, gender, address, city, email, contactNo, birthday, occu,ptID);
                 cmd = new MySqlCommand(query, dbconn);
                 cmd.ExecuteNonQuery();
+                dbconn.Close(); 
             }
             catch (Exception e)
             {
                 Debug.Write(e);
                 return false;
             }
-            dbconn.Close();
-
+            
             return true;
+        }
+
+        public DataTable getNormalValues(int age, char gender)
+        {
+            dbconn.Open();
+            try
+            {
+                query = String.Format("SELECT parametersID, ci_lower, ci_upper FROM `parameter_values` WHERE {0} BETWEEN age_lower AND age_upper AND values_gender = '{1}';", age, gender);
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, dbconn);
+                MySqlCommandBuilder commandBuilder = new MySqlCommandBuilder(dataAdapter);
+
+                DataTable table = new DataTable();
+                table.Locale = System.Globalization.CultureInfo.InvariantCulture;
+                dataAdapter.Fill(table);
+                return table;
+            }
+            catch (MySqlException e)
+            {
+                Debug.Write("\n" + e);
+                return null;
+            }
         }
     }
 }

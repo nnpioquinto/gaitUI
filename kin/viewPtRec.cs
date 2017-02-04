@@ -13,6 +13,7 @@ namespace kin
     public partial class viewPtRec : Form
     {
         Menu menu = new Menu();
+
         public viewPtRec()
         {
             InitializeComponent();
