@@ -26,9 +26,10 @@ namespace kin
             Boolean valid = sysDB.loginCheck(username,pw);
             if (valid)
             {
-                Menu menu = new Menu();
                 this.Hide();
+                Menu menu = new Menu();
                 menu.ShowDialog();
+                this.Close();
             }
             else
             {

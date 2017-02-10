@@ -645,9 +645,10 @@ namespace kin
             //int age = sysDB.getAge(ptID);
             char gender = sysDB.getGender(ptID);
 
-            gaitResults results = new gaitResults(18, gender, ptID, this);
+            gaitResults results = new gaitResults(20, gender, ptID, this);
             results.Show();
 
+            sensor.Stop();
             /*
             String output = "", aOutput = "";
             output += String.Format("Normal stride velocity range: " + sysDB.spd_lower + "cm/s - " + sysDB.spd_upper + "cm/s\nActual stride velocity is: " + strideVelocity + " cm/s\n\n");
@@ -667,12 +668,11 @@ namespace kin
             DialogResult result = MessageBox.Show("Are you sure to go back to records?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if(result == DialogResult.Yes)
             {
+                this.Hide();
                 viewPtRec view = new viewPtRec();
-                view.Show();
+                view.ShowDialog();
                 this.Dispose();
             }
-
-
         }
     }
 }

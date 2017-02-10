@@ -13,7 +13,7 @@ namespace kin
     public partial class editRecord : Form
     {
         int ptID;
-        viewPtRec view;
+
         string fName;
         string mName;
         string lName;
@@ -27,19 +27,18 @@ namespace kin
 
         SystemDB sysDB = new SystemDB();
        
-
-        public editRecord(int ptID, viewPtRec view) 
+        public editRecord(int ptID) 
         {
             InitializeComponent();
             this.ptID = ptID;
-            this.view = view;
-
             resetData();
         }
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-            view.Show();
+            this.Hide();
+            viewPtRec view = new viewPtRec();
+            view.ShowDialog();
             this.Dispose();
         }
 
@@ -89,8 +88,9 @@ namespace kin
                             resetData();
                         else
                         {
-                            view = new viewPtRec();
-                            view.Show();
+                            this.Hide();
+                            viewPtRec view = new viewPtRec();
+                            view.ShowDialog();
                             this.Dispose();
                         }
                     }
@@ -119,7 +119,5 @@ namespace kin
             contactNo_box.Text = contactNo;
             occu_box.Text = occu;
         }
-        
     }
-    
 }

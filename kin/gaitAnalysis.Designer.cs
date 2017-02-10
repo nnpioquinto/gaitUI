@@ -50,7 +50,7 @@
             // 
             this.videoBox.Location = new System.Drawing.Point(33, 28);
             this.videoBox.Name = "videoBox";
-            this.videoBox.Size = new System.Drawing.Size(539, 387);
+            this.videoBox.Size = new System.Drawing.Size(640, 480);
             this.videoBox.TabIndex = 0;
             this.videoBox.TabStop = false;
             this.videoBox.Visible = false;
@@ -58,7 +58,7 @@
             // startBtn
             // 
             this.startBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startBtn.Location = new System.Drawing.Point(443, 518);
+            this.startBtn.Location = new System.Drawing.Point(828, 530);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(129, 43);
             this.startBtn.TabIndex = 1;
@@ -80,7 +80,7 @@
             // stopBtn
             // 
             this.stopBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stopBtn.Location = new System.Drawing.Point(638, 518);
+            this.stopBtn.Location = new System.Drawing.Point(689, 530);
             this.stopBtn.Name = "stopBtn";
             this.stopBtn.Size = new System.Drawing.Size(129, 43);
             this.stopBtn.TabIndex = 3;
@@ -93,7 +93,8 @@
             this.timeLbl.AutoSize = true;
             this.timeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timeLbl.ForeColor = System.Drawing.Color.Black;
-            this.timeLbl.Location = new System.Drawing.Point(50, 438);
+            this.timeLbl.Location = new System.Drawing.Point(679, 363);
+            this.timeLbl.Margin = new System.Windows.Forms.Padding(3);
             this.timeLbl.Name = "timeLbl";
             this.timeLbl.Size = new System.Drawing.Size(63, 24);
             this.timeLbl.TabIndex = 4;
@@ -104,7 +105,8 @@
             this.stepLbl.AutoSize = true;
             this.stepLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stepLbl.ForeColor = System.Drawing.Color.Black;
-            this.stepLbl.Location = new System.Drawing.Point(365, 438);
+            this.stepLbl.Location = new System.Drawing.Point(679, 333);
+            this.stepLbl.Margin = new System.Windows.Forms.Padding(3);
             this.stepLbl.Name = "stepLbl";
             this.stepLbl.Size = new System.Drawing.Size(67, 24);
             this.stepLbl.TabIndex = 5;
@@ -115,7 +117,8 @@
             this.skelLbl.AutoSize = true;
             this.skelLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.skelLbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.skelLbl.Location = new System.Drawing.Point(578, 379);
+            this.skelLbl.Location = new System.Drawing.Point(679, 286);
+            this.skelLbl.Margin = new System.Windows.Forms.Padding(3);
             this.skelLbl.Name = "skelLbl";
             this.skelLbl.Size = new System.Drawing.Size(93, 24);
             this.skelLbl.TabIndex = 6;
@@ -124,7 +127,7 @@
             // backBtn
             // 
             this.backBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.backBtn.Location = new System.Drawing.Point(33, 525);
+            this.backBtn.Location = new System.Drawing.Point(33, 537);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(110, 36);
             this.backBtn.TabIndex = 7;
@@ -137,7 +140,8 @@
             this.feetLbl.AutoSize = true;
             this.feetLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.feetLbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.feetLbl.Location = new System.Drawing.Point(578, 339);
+            this.feetLbl.Location = new System.Drawing.Point(679, 256);
+            this.feetLbl.Margin = new System.Windows.Forms.Padding(3);
             this.feetLbl.Name = "feetLbl";
             this.feetLbl.Size = new System.Drawing.Size(53, 24);
             this.feetLbl.TabIndex = 8;
@@ -148,7 +152,8 @@
             this.sLenLbl.AutoSize = true;
             this.sLenLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.sLenLbl.ForeColor = System.Drawing.Color.Green;
-            this.sLenLbl.Location = new System.Drawing.Point(578, 35);
+            this.sLenLbl.Location = new System.Drawing.Point(679, 28);
+            this.sLenLbl.Margin = new System.Windows.Forms.Padding(5);
             this.sLenLbl.Name = "sLenLbl";
             this.sLenLbl.Size = new System.Drawing.Size(121, 24);
             this.sLenLbl.TabIndex = 9;
@@ -159,7 +164,8 @@
             this.sFreqLbl.AutoSize = true;
             this.sFreqLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.sFreqLbl.ForeColor = System.Drawing.Color.Green;
-            this.sFreqLbl.Location = new System.Drawing.Point(578, 116);
+            this.sFreqLbl.Location = new System.Drawing.Point(681, 96);
+            this.sFreqLbl.Margin = new System.Windows.Forms.Padding(5);
             this.sFreqLbl.Name = "sFreqLbl";
             this.sFreqLbl.Size = new System.Drawing.Size(150, 24);
             this.sFreqLbl.TabIndex = 10;
@@ -170,7 +176,8 @@
             this.swingTimeLbl.AutoSize = true;
             this.swingTimeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.swingTimeLbl.ForeColor = System.Drawing.Color.Green;
-            this.swingTimeLbl.Location = new System.Drawing.Point(50, 484);
+            this.swingTimeLbl.Location = new System.Drawing.Point(681, 164);
+            this.swingTimeLbl.Margin = new System.Windows.Forms.Padding(5);
             this.swingTimeLbl.Name = "swingTimeLbl";
             this.swingTimeLbl.Size = new System.Drawing.Size(125, 24);
             this.swingTimeLbl.TabIndex = 11;
@@ -181,7 +188,8 @@
             this.StanceTimeLbl.AutoSize = true;
             this.StanceTimeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.StanceTimeLbl.ForeColor = System.Drawing.Color.Green;
-            this.StanceTimeLbl.Location = new System.Drawing.Point(365, 484);
+            this.StanceTimeLbl.Location = new System.Drawing.Point(681, 198);
+            this.StanceTimeLbl.Margin = new System.Windows.Forms.Padding(5);
             this.StanceTimeLbl.Name = "StanceTimeLbl";
             this.StanceTimeLbl.Size = new System.Drawing.Size(131, 24);
             this.StanceTimeLbl.TabIndex = 12;
@@ -192,7 +200,8 @@
             this.srLenLbl.AutoSize = true;
             this.srLenLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.srLenLbl.ForeColor = System.Drawing.Color.Green;
-            this.srLenLbl.Location = new System.Drawing.Point(578, 73);
+            this.srLenLbl.Location = new System.Drawing.Point(679, 62);
+            this.srLenLbl.Margin = new System.Windows.Forms.Padding(5);
             this.srLenLbl.Name = "srLenLbl";
             this.srLenLbl.Size = new System.Drawing.Size(131, 24);
             this.srLenLbl.TabIndex = 13;
@@ -203,7 +212,8 @@
             this.srVeloLbl.AutoSize = true;
             this.srVeloLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.srVeloLbl.ForeColor = System.Drawing.Color.Green;
-            this.srVeloLbl.Location = new System.Drawing.Point(578, 159);
+            this.srVeloLbl.Location = new System.Drawing.Point(679, 130);
+            this.srVeloLbl.Margin = new System.Windows.Forms.Padding(5);
             this.srVeloLbl.Name = "srVeloLbl";
             this.srVeloLbl.Size = new System.Drawing.Size(139, 24);
             this.srVeloLbl.TabIndex = 14;
@@ -213,7 +223,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 573);
+            this.ClientSize = new System.Drawing.Size(969, 585);
             this.Controls.Add(this.srVeloLbl);
             this.Controls.Add(this.srLenLbl);
             this.Controls.Add(this.StanceTimeLbl);

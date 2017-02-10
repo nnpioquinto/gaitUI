@@ -16,12 +16,10 @@ namespace kin
     {
 
         Boolean invalid = false;
-        Menu menu;
 
-        public newRecord(Menu menu)
+        public newRecord()
         {
             InitializeComponent();
-            this.menu = menu;
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
@@ -56,22 +54,21 @@ namespace kin
                 if(result == DialogResult.Yes)
                 {
                     Boolean success = sysDB.createPatient(fName, mName, lName, gender, birthday, address, city, email, contactNo, occu);    
-                    if (success) 
-                        { 
-                            MessageBox.Show("Record Saved!", "Success");
-                            result = MessageBox.Show("Create record again?\n(Clicking No will redirect you to the Main Menu)", "Again?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                            if(result == DialogResult.Yes)
-                                resetBoxes();
-                            else{
-                                this.menu.Show();
-                                this.Dispose();
-                            }
+                    if (success)
+                    {
+                        MessageBox.Show("Record Saved!", "Success");
+                        result = MessageBox.Show("Create record again?\n(Clicking No will redirect you to the Main Menu)", "Again?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                            resetBoxes();
+                        else {
+                            this.Hide();
+                            Menu menu = new Menu();
+                            menu.ShowDialog();
+                            this.Dispose();
                         }
-                    
+                    }
                 }
             }
-
-
         }
        
 
@@ -97,8 +94,10 @@ namespace kin
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-            this.menu.Show();
-            this.Close();
+            this.Hide();
+            Menu menu = new Menu();
+            menu.ShowDialog();
+            this.Dispose();
         }
     }
 }
