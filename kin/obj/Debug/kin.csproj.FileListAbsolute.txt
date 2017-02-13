@@ -48,3 +48,5 @@ C:\Users\Ninna\Documents\GitHub\gaitUI\kin\obj\Debug\kin.csproj.GenerateResource
 C:\Users\Ninna\Documents\GitHub\gaitUI\kin\obj\Debug\kin.gaitAnalysis.resources
 C:\Users\Ninna\Documents\GitHub\gaitUI\kin\obj\Debug\kin.PtHistory.resources
 C:\Users\Ninna\Documents\GitHub\gaitUI\kin\obj\Debug\kin.gaitResults.resources
+C:\Users\Jan\Documents\GitHub\gaitUI\kin\obj\Debug\kin.gaitResults.resources
+C:\Users\Jan\Documents\GitHub\gaitUI\kin\obj\Debug\kin.PtHistory.resources

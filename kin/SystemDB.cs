@@ -16,7 +16,15 @@ namespace kin
         MySqlCommand cmd;
         MySqlDataReader rdr;
         static string connString, query;
-        public double spd_upper = 0.00, spd_lower = 0.00, freq_upper = 0.00, freq_lower = 0.00, len_upper = 0.00, len_lower = 0.00;
+        public double
+            spd_upper = 0.00,   spd_lower = 0.00,
+            freq_upper = 0.00,  freq_lower = 0.00,
+            len_upper = 0.00,   len_lower = 0.00,
+            wid_upper = 0.00,   wid_lower = 0.00,
+            cad_upper = 0.00,   cad_lower = 0.00,
+            srl_upper = 0.00,   srl_lower = 0.00,
+            swt_upper = 0.00,   swt_lower = 0.00,
+            stt_upper = 0.00,   stt_lower = 0.00;
 
         public SystemDB()
         {
@@ -25,43 +33,51 @@ namespace kin
         }
 
 
-        public string AnalyzeData(string type, int age, char gender, double strideVelocity)
+        public string AnalyzeData(string type, int age, char gender, double param_val)
         {
             // string type determines which table to be analyzed. if speed(velocity), steplength(stridelength), or stepfrequency
             dbconn.Open();
-            double ci_lower = 0.00, ci_upper = 0.00, pi_lower = 0.00, pi_upper = 0.00;
+            double var_lower = 0.00, var_upper = 0.00;
             string output = "", param, varName;
             switch (type)
             {
                 case "spd": param = "1"; varName = "speed"; break;
-                case "len": param = "3"; varName = "stride length"; break;
+                case "len": param = "3"; varName = "step length"; break;
                 case "freq": param = "2"; varName = "step frequency"; break;
+                case "wid": param = "4"; varName = "step width"; break;
+                case "cad": param = "5"; varName = "cadence"; break;
+                case "srl": param = "6"; varName = "stride length"; break;
+                case "swt": param = "7"; varName = "swing time"; break;
+                case "stt": param = "8"; varName = "step time"; break;
                 default: param = ""; varName = ""; break;
             }
-            query = String.Format("SELECT ci_lower, ci_upper, pi_lower, pi_upper FROM parameter_values WHERE parametersID = {0} AND values_gender = '{1}' AND '{2}' BETWEEN age_lower AND age_upper", param, gender, age);
+            query = String.Format("SELECT var_lower, var_upper FROM parameter_values WHERE parametersID = {0} AND values_gender = '{1}' AND '{2}' BETWEEN age_lower AND age_upper", param, gender, age);
             cmd = new MySqlCommand(query, dbconn);
             rdr = cmd.ExecuteReader();
 
             while (rdr.Read())
             {
-                ci_lower = double.Parse(rdr.GetString(0));
-                ci_upper = double.Parse(rdr.GetString(1));
-                pi_lower = double.Parse(rdr.GetString(2));
-                pi_upper = double.Parse(rdr.GetString(3));
-            }
+                var_lower = double.Parse(rdr.GetString(0));
+                var_upper = double.Parse(rdr.GetString(1));
+                            }
 
-            if (strideVelocity > ci_lower && strideVelocity < ci_upper)
+            if (param_val > var_lower && param_val < var_upper)
                 output = "The " + varName + " within the normal range.";
-            else if (strideVelocity < ci_lower)
+            else if (param_val < var_lower)
                 output = "The " + varName + " is less than the normal range.";
-            else if (strideVelocity > ci_upper)
+            else if (param_val > var_upper)
                 output = "The " + varName + " is greater than the normal range.";
             dbconn.Close();
             switch (type)
             {
-                case "spd": spd_lower = ci_lower; spd_upper = ci_upper; break;
-                case "len": len_lower = ci_lower; len_upper = ci_upper; break;
-                case "freq": freq_lower = ci_lower; freq_upper = ci_upper; break;
+                case "spd": spd_lower = var_lower; spd_upper = var_upper; break;
+                case "len": len_lower = var_lower; len_upper = var_upper; break;
+                case "freq": freq_lower = var_lower; freq_upper = var_upper; break;
+                case "wid": wid_lower = var_lower; wid_upper = var_upper; break;
+                case "cad": cad_lower = var_lower; cad_upper = var_upper; break;
+                case "srl": srl_lower = var_lower; srl_upper = var_upper; break;
+                case "swt": swt_lower = var_lower; swt_upper = var_upper; break;
+                case "stt": stt_lower = var_lower; stt_upper = var_upper; break;
                 default: break;
             }
             return output;
@@ -247,7 +263,7 @@ namespace kin
             dbconn.Open();
             try
             {
-                query = String.Format("SELECT parametersID, ci_lower, ci_upper FROM `parameter_values` WHERE {0} BETWEEN age_lower AND age_upper AND values_gender = '{1}';", age, gender);
+                query = String.Format("SELECT parametersID, val_lower, val_upper FROM `parameter_values` WHERE {0} BETWEEN age_lower AND age_upper AND values_gender = '{1}';", age, gender);
                 MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, dbconn);
                 MySqlCommandBuilder commandBuilder = new MySqlCommandBuilder(dataAdapter);
 
