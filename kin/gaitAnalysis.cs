@@ -94,7 +94,6 @@ namespace kin
             sensor = KinectSensor.KinectSensors.Where(s => s.Status == KinectStatus.Connected).FirstOrDefault();
         }
        
-
         private void gaitAnalysis_Load(object sender, EventArgs e)
         {
             if (sensor == null)
@@ -614,19 +613,13 @@ namespace kin
             return bitmapFrame;
         }
 
-        Thread gaitThread;
-
         private void startBtn_Click(object sender, EventArgs e)
         {
-         //   Console.WriteLine("Start");
             if (skeleton != null)
             {
                 start = true;
                 startBtn.Enabled = false;
                 stopBtn.Enabled = true;
-
-               //   gaitThread = new Thread(captureValues);
-               // gaitThread.Start();
             }
             else
             {
@@ -637,30 +630,19 @@ namespace kin
 
         private void stopBtn_Click(object sender, EventArgs e)
         {
-            //gaithread.Abort();
             start = false;
             stopBtn.Enabled = false;
+            sensor.Stop();
+            sensor = null;
 
             sysDB = new SystemDB(); //values of gender and age should come from db
             //int age = sysDB.getAge(ptID);
             char gender = sysDB.getGender(ptID);
 
             gaitResults results = new gaitResults(20, gender, ptID, this);
-            results.Show();
-
-            sensor.Stop();
-            /*
-            String output = "", aOutput = "";
-            output += String.Format("Normal stride velocity range: " + sysDB.spd_lower + "cm/s - " + sysDB.spd_upper + "cm/s\nActual stride velocity is: " + strideVelocity + " cm/s\n\n");
-            output += String.Format("Normal step frequency range: " + sysDB.freq_lower + "steps/second - " + sysDB.freq_upper + "steps/second\nActual step frequency is: " + stepFrequency + " steps/second\n\n");
-            output += String.Format("Normal step length range: " + sysDB.len_lower + "cm - " + sysDB.len_upper + "cm\nActual step length is: " + stepLength + " cm\n\n");
-            aOutput += ("Analysis: \n");
-            aOutput += sysDB.AnalyzeData("spd",18 , gender, strideVelocity);
-            aOutput += sysDB.AnalyzeData("freq", 18, gender, stepFrequency);
-            aOutput += sysDB.AnalyzeData("len", 18, gender, stepLength);
-
-            MessageBox.Show(output);
-            MessageBox.Show(aOutput);*/
+            this.Hide();
+            results.ShowDialog();
+            this.Dispose();
         }
 
         private void backBtn_Click(object sender, EventArgs e)
@@ -668,6 +650,8 @@ namespace kin
             DialogResult result = MessageBox.Show("Are you sure to go back to records?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if(result == DialogResult.Yes)
             {
+                sensor.Stop();
+                sensor = null;
                 this.Hide();
                 viewPtRec view = new viewPtRec();
                 view.ShowDialog();

@@ -14,11 +14,23 @@ namespace kin
     {
         private int ptID;
         viewPtRec view;
-        public PtHistory(int ptID, viewPtRec view)
+        public PtHistory(int ptID)
         {
             InitializeComponent();
             this.ptID = ptID;
-            this.view = view;
+
+            SystemDB sysdb = new SystemDB();
+            BindingSource bindSource = new BindingSource();
+            histDataGrid.DataSource = bindSource;
+            bindSource.DataSource = sysdb.getHistory(ptID);
+        }
+
+        private void backBtn_Click(object sender, EventArgs e)
+        {
+            viewPtRec view = new viewPtRec();
+            this.Hide();
+            view.ShowDialog();
+            this.Dispose();
         }
     }
 }

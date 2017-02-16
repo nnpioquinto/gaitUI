@@ -35,7 +35,7 @@ namespace kin
         {
             int ptID = (int)dataGrid.SelectedRows[0].Cells["patientID"].Value;
 
-            PtHistory ptHist = new PtHistory(ptID, this);
+            PtHistory ptHist = new PtHistory(ptID);
             this.Hide();
             ptHist.ShowDialog();
             this.Dispose();

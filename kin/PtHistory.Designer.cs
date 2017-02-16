@@ -28,61 +28,62 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGrid = new System.Windows.Forms.DataGridView();
+            this.histDataGrid = new System.Windows.Forms.DataGridView();
             this.backBtn = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.histDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGrid
+            // histDataGrid
             // 
-            this.dataGrid.AllowUserToAddRows = false;
-            this.dataGrid.AllowUserToDeleteRows = false;
-            this.dataGrid.AllowUserToResizeRows = false;
-            this.dataGrid.BackgroundColor = System.Drawing.Color.White;
-            this.dataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid.Location = new System.Drawing.Point(13, 33);
-            this.dataGrid.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGrid.MultiSelect = false;
-            this.dataGrid.Name = "dataGrid";
-            this.dataGrid.ReadOnly = true;
-            this.dataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGrid.ShowCellErrors = false;
-            this.dataGrid.ShowCellToolTips = false;
-            this.dataGrid.Size = new System.Drawing.Size(837, 395);
-            this.dataGrid.TabIndex = 0;
+            this.histDataGrid.AllowUserToAddRows = false;
+            this.histDataGrid.AllowUserToDeleteRows = false;
+            this.histDataGrid.AllowUserToResizeRows = false;
+            this.histDataGrid.BackgroundColor = System.Drawing.Color.White;
+            this.histDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.histDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.histDataGrid.Location = new System.Drawing.Point(13, 33);
+            this.histDataGrid.Margin = new System.Windows.Forms.Padding(4);
+            this.histDataGrid.MultiSelect = false;
+            this.histDataGrid.Name = "histDataGrid";
+            this.histDataGrid.ReadOnly = true;
+            this.histDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.histDataGrid.ShowCellErrors = false;
+            this.histDataGrid.ShowCellToolTips = false;
+            this.histDataGrid.Size = new System.Drawing.Size(837, 395);
+            this.histDataGrid.TabIndex = 0;
             // 
             // backBtn
             // 
             this.backBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.backBtn.Location = new System.Drawing.Point(671, 495);
+            this.backBtn.Location = new System.Drawing.Point(13, 524);
             this.backBtn.Margin = new System.Windows.Forms.Padding(4);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(165, 28);
             this.backBtn.TabIndex = 5;
             this.backBtn.Text = "Back";
             this.backBtn.UseVisualStyleBackColor = true;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
-            // Form1
+            // PtHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(871, 565);
             this.Controls.Add(this.backBtn);
-            this.Controls.Add(this.dataGrid);
+            this.Controls.Add(this.histDataGrid);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form1";
+            this.Name = "PtHistory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "View Patient Records";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.histDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGrid;
+        private System.Windows.Forms.DataGridView histDataGrid;
         private System.Windows.Forms.Button backBtn;
     }
 }

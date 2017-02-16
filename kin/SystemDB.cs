@@ -29,7 +29,7 @@ namespace kin
         {
             // string type determines which table to be analyzed. if speed(velocity), steplength(stridelength), or stepfrequency
             dbconn.Open();
-            double ci_lower = 0.00, ci_upper = 0.00, pi_lower = 0.00, pi_upper = 0.00;
+            double val_lower = 0.00, val_upper = 0.00;
             string output = "", param, varName;
             switch (type)
             {
@@ -38,30 +38,29 @@ namespace kin
                 case "freq": param = "2"; varName = "step frequency"; break;
                 default: param = ""; varName = ""; break;
             }
-            query = String.Format("SELECT ci_lower, ci_upper, pi_lower, pi_upper FROM parameter_values WHERE parametersID = {0} AND values_gender = '{1}' AND '{2}' BETWEEN age_lower AND age_upper", param, gender, age);
+            query = String.Format("SELECT val_lower, val_upper FROM parameter_values WHERE parametersID = {0} AND values_gender = '{1}' AND '{2}' BETWEEN age_lower AND age_upper", param, gender, age);
             cmd = new MySqlCommand(query, dbconn);
             rdr = cmd.ExecuteReader();
 
             while (rdr.Read())
             {
-                ci_lower = double.Parse(rdr.GetString(0));
-                ci_upper = double.Parse(rdr.GetString(1));
-                pi_lower = double.Parse(rdr.GetString(2));
-                pi_upper = double.Parse(rdr.GetString(3));
+                val_lower = double.Parse(rdr.GetString(0));
+                val_upper = double.Parse(rdr.GetString(1));
+
             }
 
-            if (strideVelocity > ci_lower && strideVelocity < ci_upper)
+            if (strideVelocity > val_lower && strideVelocity < val_upper)
                 output = "The " + varName + " within the normal range.";
-            else if (strideVelocity < ci_lower)
+            else if (strideVelocity < val_lower)
                 output = "The " + varName + " is less than the normal range.";
-            else if (strideVelocity > ci_upper)
+            else if (strideVelocity > val_upper)
                 output = "The " + varName + " is greater than the normal range.";
             dbconn.Close();
             switch (type)
             {
-                case "spd": spd_lower = ci_lower; spd_upper = ci_upper; break;
-                case "len": len_lower = ci_lower; len_upper = ci_upper; break;
-                case "freq": freq_lower = ci_lower; freq_upper = ci_upper; break;
+                case "spd": spd_lower = val_lower; spd_upper = val_upper; break;
+                case "len": len_lower = val_lower; len_upper = val_upper; break;
+                case "freq": freq_lower = val_lower; freq_upper = val_upper; break;
                 default: break;
             }
             return output;
@@ -84,6 +83,7 @@ namespace kin
 
             int age = 0;
             dbconn.Close();
+            rdr.Close();
             return age;
         }
 
@@ -176,7 +176,7 @@ namespace kin
                 DataTable table = new DataTable();
                 table.Locale = System.Globalization.CultureInfo.InvariantCulture;
                 dataAdapter.Fill(table);
-                dbconn.Close(); //DITO MO LAGAY TRY MO
+                dbconn.Close(); 
                 return table;
             }
             catch (MySqlException e)
@@ -184,7 +184,7 @@ namespace kin
                 Console.Write("\n" + e);
                 return null;
             }
-                    }
+        }
 
         public void retrieveData(int id, out string fName, out string mName, out string lName, out string gender, out string birthday, out string address, out string city, out string email, out string contactNo, out string occu)
         {
@@ -247,13 +247,75 @@ namespace kin
             dbconn.Open();
             try
             {
-                query = String.Format("SELECT parametersID, ci_lower, ci_upper FROM `parameter_values` WHERE {0} BETWEEN age_lower AND age_upper AND values_gender = '{1}';", age, gender);
+                query = String.Format("SELECT parametersID, val_lower, val_upper FROM `parameter_values` WHERE {0} BETWEEN age_lower AND age_upper AND values_gender = '{1}';", age, gender);
                 MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, dbconn);
                 MySqlCommandBuilder commandBuilder = new MySqlCommandBuilder(dataAdapter);
 
                 DataTable table = new DataTable();
                 table.Locale = System.Globalization.CultureInfo.InvariantCulture;
                 dataAdapter.Fill(table);
+                dbconn.Close();
+                return table;
+            }
+            catch (MySqlException e)
+            {
+                Debug.Write("\n" + e);
+                return null;
+            }
+        }
+
+        public Boolean saveRecords(double strideVel, double stepLen, double stepFreq, int ptID)
+        {
+            dbconn.Close();
+            dbconn.Open();
+            
+            try
+            {
+                int visitID = 0;
+                query = String.Format("INSERT INTO patient_visit VALUES (null, {0}, 2, {1})", ptID, DateTime.Today.ToShortDateString());
+                cmd = new MySqlCommand(query, dbconn);
+                cmd.ExecuteNonQuery();
+                dbconn.Close();
+                dbconn.Open();
+
+                query = String.Format("Select LAST_INSERT_ID()");
+                cmd = new MySqlCommand(query, dbconn);
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    visitID = rdr.GetInt32(0);
+                }
+                dbconn.Close();
+                dbconn.Open();
+
+                query = String.Format("INSERT INTO patient_record VALUES (null, {0},{1}, {2}, {3}, 0,0,0,0,0)", visitID, strideVel, stepLen, stepFreq);
+                cmd = new MySqlCommand(query, dbconn);
+                cmd.ExecuteNonQuery();
+                dbconn.Close();
+            }
+            catch (MySqlException e)
+            {
+                Debug.Write(e);
+                return false;
+            }
+
+            
+            return true;
+        }
+
+        public DataTable getHistory(int ptID)
+        {
+            dbconn.Open();
+            try
+            {
+                query = String.Format("SELECT patient_record.visitID, `gaitspeed`, `steplen`, `stepfreq`, `stepwidth`, `cadence`, `stridelength`, `swingtime`, `steptime` FROM patient_record, patient_visit WHERE patient_record.visitID = ( SELECT patient_visit.visitID from patient_visit WHERE patient_visit.patientID = {0})", ptID);
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, dbconn);
+                MySqlCommandBuilder commandBuilder = new MySqlCommandBuilder(dataAdapter);
+
+                DataTable table = new DataTable();
+                table.Locale = System.Globalization.CultureInfo.InvariantCulture;
+                dataAdapter.Fill(table);
+                dbconn.Close();
                 return table;
             }
             catch (MySqlException e)

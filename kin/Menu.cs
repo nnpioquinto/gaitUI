@@ -32,5 +32,14 @@ namespace kin
             viewRec.ShowDialog();
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult result1 = MessageBox.Show("Are you sure to exit", "Confirmation", MessageBoxButtons.YesNo);
+            if (result1 == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
     }
 }
