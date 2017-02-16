@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(gaitAnalysis));
             this.videoBox = new System.Windows.Forms.PictureBox();
             this.startBtn = new System.Windows.Forms.Button();
             this.noKinectWarn = new System.Windows.Forms.Label();
@@ -57,6 +58,10 @@
             // 
             // startBtn
             // 
+            this.startBtn.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.startBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.YellowGreen;
+            this.startBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.YellowGreen;
+            this.startBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.startBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startBtn.Location = new System.Drawing.Point(828, 530);
             this.startBtn.Name = "startBtn";
@@ -79,6 +84,10 @@
             // 
             // stopBtn
             // 
+            this.stopBtn.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.stopBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
+            this.stopBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
+            this.stopBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.stopBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stopBtn.Location = new System.Drawing.Point(689, 530);
             this.stopBtn.Name = "stopBtn";
@@ -120,12 +129,16 @@
             this.skelLbl.Location = new System.Drawing.Point(679, 286);
             this.skelLbl.Margin = new System.Windows.Forms.Padding(3);
             this.skelLbl.Name = "skelLbl";
-            this.skelLbl.Size = new System.Drawing.Size(93, 24);
+            this.skelLbl.Size = new System.Drawing.Size(63, 24);
             this.skelLbl.TabIndex = 6;
-            this.skelLbl.Text = "Skeleton: ";
+            this.skelLbl.Text = "Body: ";
             // 
             // backBtn
             // 
+            this.backBtn.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.backBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightCoral;
+            this.backBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightCoral;
+            this.backBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.backBtn.Location = new System.Drawing.Point(33, 537);
             this.backBtn.Name = "backBtn";
@@ -240,9 +253,10 @@
             this.Controls.Add(this.startBtn);
             this.Controls.Add(this.videoBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "gaitAnalysis";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "gaitAnalysis";
+            this.Text = "Gait Analysis";
             this.Load += new System.EventHandler(this.gaitAnalysis_Load);
             ((System.ComponentModel.ISupportInitialize)(this.videoBox)).EndInit();
             this.ResumeLayout(false);

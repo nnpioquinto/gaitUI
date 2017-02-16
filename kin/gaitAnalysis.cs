@@ -132,7 +132,7 @@ namespace kin
                 {
                                                                     
                     skelLbl.ForeColor = Color.Green;
-                    skelLbl.Text = "Skeleton: Detected";
+                    skelLbl.Text = "Body: Detected";
                                                                     
                     if (this.skeletons == null)
                     {
@@ -151,14 +151,14 @@ namespace kin
                     else
                     {
                         skelLbl.ForeColor = Color.Red;
-                        skelLbl.Text = "No skeleton detected!";
+                        skelLbl.Text = "No body detected!";
                     }
                     DrawStandingSkeletons(skeletons);
                 }
                 else
                 {
                     skelLbl.ForeColor = Color.Red;
-                    skelLbl.Text = "No skeleton detected!";
+                    skelLbl.Text = "No body detected!";
                 }
             }
         }
@@ -345,7 +345,7 @@ namespace kin
                         strideVelocity = Math.Round(totalDistance / totalTime, 2);
 
 
-                        srVeloLbl.Text = "Stride Velocity: " + strideVelocity;          //added -n
+                        srVeloLbl.Text = "Stride Velocity: " + strideVelocity;          
                     }
 
                     //Step Length and Step Frequency (Right Foot)
@@ -442,9 +442,9 @@ namespace kin
                             terminalStepTime = 0;
                         }
                     }
-                    sLenLbl.Text = "Step Length: " + stepLength;          //added 
-                    stepLbl.Text = "Steps: " + stepCounter;              //added 
-                    sFreqLbl.Text = "Step Frequency: " + stepFrequency;  //added 
+                    sLenLbl.Text = "Step Length: " + stepLength;         
+                    stepLbl.Text = "Steps: " + stepCounter;              
+                    sFreqLbl.Text = "Step Frequency: " + stepFrequency;  
 
                     //Stride Length (Left Foot)
                     if (stance && strideProcessingLeft)
@@ -623,7 +623,7 @@ namespace kin
             }
             else
             {
-                skelLbl.Text = "Skeleton: Not Detected";
+                skelLbl.Text = "Body: Not Detected";
                 skelLbl.ForeColor = Color.Red;
             }
         }
@@ -635,11 +635,12 @@ namespace kin
             sensor.Stop();
             sensor = null;
 
-            sysDB = new SystemDB(); //values of gender and age should come from db
-            //int age = sysDB.getAge(ptID);
+            sysDB = new SystemDB(); 
+            int age = sysDB.getAge(ptID); //if error, comment this
             char gender = sysDB.getGender(ptID);
 
-            gaitResults results = new gaitResults(20, gender, ptID, this);
+            gaitResults results = new gaitResults(age, gender, ptID, this); //if error, comment this
+            //gaitResults results = new gaitResults(age, gender, ptID, this); //uncomment this
             this.Hide();
             results.ShowDialog();
             this.Dispose();

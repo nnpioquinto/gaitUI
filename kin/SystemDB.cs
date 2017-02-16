@@ -37,11 +37,10 @@ namespace kin
         {
             // string type determines which table to be analyzed. if speed(velocity), steplength(stridelength), or stepfrequency
             dbconn.Open();
-<<<<<<< HEAD
+
             double val_lower = 0.00, val_upper = 0.00;
-=======
             double var_lower = 0.00, var_upper = 0.00;
->>>>>>> refs/remotes/origin/master
+
             string output = "", param, varName;
             switch (type)
             {
@@ -55,56 +54,47 @@ namespace kin
                 case "stt": param = "8"; varName = "step time"; break;
                 default: param = ""; varName = ""; break;
             }
-<<<<<<< HEAD
+
             query = String.Format("SELECT val_lower, val_upper FROM parameter_values WHERE parametersID = {0} AND values_gender = '{1}' AND '{2}' BETWEEN age_lower AND age_upper", param, gender, age);
-=======
-            query = String.Format("SELECT var_lower, var_upper FROM parameter_values WHERE parametersID = {0} AND values_gender = '{1}' AND '{2}' BETWEEN age_lower AND age_upper", param, gender, age);
->>>>>>> refs/remotes/origin/master
             cmd = new MySqlCommand(query, dbconn);
             rdr = cmd.ExecuteReader();
 
             while (rdr.Read())
             {
-<<<<<<< HEAD
+
                 val_lower = double.Parse(rdr.GetString(0));
                 val_upper = double.Parse(rdr.GetString(1));
 
             }
 
-            if (strideVelocity > val_lower && strideVelocity < val_upper)
+            /*if (strideVelocity > val_lower && strideVelocity < val_upper)
                 output = "The " + varName + " within the normal range.";
             else if (strideVelocity < val_lower)
                 output = "The " + varName + " is less than the normal range.";
-            else if (strideVelocity > val_upper)
-=======
+            else if (strideVelocity > val_upper) { 
                 var_lower = double.Parse(rdr.GetString(0));
                 var_upper = double.Parse(rdr.GetString(1));
-                            }
+             }*/
 
             if (param_val > var_lower && param_val < var_upper)
                 output = "The " + varName + " within the normal range.";
             else if (param_val < var_lower)
                 output = "The " + varName + " is less than the normal range.";
             else if (param_val > var_upper)
->>>>>>> refs/remotes/origin/master
                 output = "The " + varName + " is greater than the normal range.";
             dbconn.Close();
+
             switch (type)
             {
-<<<<<<< HEAD
+
                 case "spd": spd_lower = val_lower; spd_upper = val_upper; break;
                 case "len": len_lower = val_lower; len_upper = val_upper; break;
                 case "freq": freq_lower = val_lower; freq_upper = val_upper; break;
-=======
-                case "spd": spd_lower = var_lower; spd_upper = var_upper; break;
-                case "len": len_lower = var_lower; len_upper = var_upper; break;
-                case "freq": freq_lower = var_lower; freq_upper = var_upper; break;
                 case "wid": wid_lower = var_lower; wid_upper = var_upper; break;
                 case "cad": cad_lower = var_lower; cad_upper = var_upper; break;
                 case "srl": srl_lower = var_lower; srl_upper = var_upper; break;
                 case "swt": swt_lower = var_lower; swt_upper = var_upper; break;
                 case "stt": stt_lower = var_lower; stt_upper = var_upper; break;
->>>>>>> refs/remotes/origin/master
                 default: break;
             }
             return output;
@@ -125,7 +115,9 @@ namespace kin
             }
             int year = Int32.Parse(dateOfBirth.Substring(6));
 
-            int age = 0;
+            int age = 2017 - year; //if error, comment this
+            //int age = 18; //uncomment this
+
             dbconn.Close();
             rdr.Close();
             return age;

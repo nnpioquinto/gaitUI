@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(gaitResults));
             this.patientLbl = new System.Windows.Forms.Label();
             this.normalLbl = new System.Windows.Forms.Label();
             this.saveBtn = new System.Windows.Forms.Button();
@@ -56,6 +57,10 @@
             // 
             // saveBtn
             // 
+            this.saveBtn.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.saveBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.YellowGreen;
+            this.saveBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.YellowGreen;
+            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveBtn.Location = new System.Drawing.Point(599, 446);
             this.saveBtn.Name = "saveBtn";
@@ -67,6 +72,10 @@
             // 
             // backBtn
             // 
+            this.backBtn.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.backBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightCoral;
+            this.backBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightCoral;
+            this.backBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.backBtn.Location = new System.Drawing.Point(42, 446);
             this.backBtn.Name = "backBtn";
@@ -86,6 +95,7 @@
             this.Controls.Add(this.normalLbl);
             this.Controls.Add(this.patientLbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "gaitResults";
             this.Text = "Results";
             this.ResumeLayout(false);

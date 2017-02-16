@@ -6,50 +6,35 @@ using System.Threading.Tasks;
 
 namespace convexhull
 {
-<<<<<<< HEAD
-    public class TPoint : IComparable<TPoint> {
-	private double x, y;
-	
-	public double getX() {
-		return x;
-	}
-	
-	public double getY() {
-		return y;
-	}
-	
-	public TPoint(double x, double y){
-		this.x = x;
-		this.y = y;
-	}
-	
-	public int compareTo(TPoint arg0) {
-		double x2 = arg0.getX();
-		return ((this.x == x2) ? this.y.CompareTo(arg0.getY()) : this.x.CompareTo(x2));
-	}
-}
-=======
-    public class TPoint  {
-        //: IComparable<TPoint>
-	    private double x, y;
-	
-	    public double getX() {
-		    return x;
-	    }
-	
-	    public double getY() {
-		    return y;
-	    }
-	
-	    public TPoint(double x, double y){
-		    this.x = x;
-		    this.y = y;
-	    }
-	
-	    public int compareTo(TPoint arg0) {
-		    double x2 = arg0.getX();
-		    return ((this.x == x2) ? this.y.CompareTo(arg0.getY()) : this.x.CompareTo(x2));
-	    }
+    public class TPoint : IComparable<TPoint>
+    {
+        private double x, y;
+
+        public double getX()
+        {
+            return x;
+        }
+
+        public double getY()
+        {
+            return y;
+        }
+
+        public TPoint(double x, double y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
+        public int compareTo(TPoint arg0)
+        {
+            double x2 = arg0.getX();
+            return ((this.x == x2) ? this.y.CompareTo(arg0.getY()) : this.x.CompareTo(x2));
+        }
+
+        public int CompareTo(TPoint other)
+        {
+            throw new NotImplementedException();
+        }
     }
->>>>>>> refs/remotes/origin/master
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(editRecord));
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -233,6 +234,10 @@
             // 
             // saveBtn
             // 
+            this.saveBtn.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.saveBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumTurquoise;
+            this.saveBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumTurquoise;
+            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveBtn.Location = new System.Drawing.Point(371, 364);
             this.saveBtn.Name = "saveBtn";
@@ -244,6 +249,10 @@
             // 
             // resetBtn
             // 
+            this.resetBtn.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.resetBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumTurquoise;
+            this.resetBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumTurquoise;
+            this.resetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resetBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetBtn.Location = new System.Drawing.Point(461, 364);
             this.resetBtn.Name = "resetBtn";
@@ -255,6 +264,10 @@
             // 
             // backBtn
             // 
+            this.backBtn.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.backBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightCoral;
+            this.backBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightCoral;
+            this.backBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.backBtn.Location = new System.Drawing.Point(596, 364);
             this.backBtn.Name = "backBtn";
@@ -275,6 +288,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label1.Location = new System.Drawing.Point(34, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(162, 22);
@@ -322,6 +336,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "editRecord";
             this.Text = "Edit Record";
             this.ResumeLayout(false);
