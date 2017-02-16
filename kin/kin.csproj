@@ -110,6 +110,9 @@
     <EmbeddedResource Include="gaitAnalysis.resx">
       <DependentUpon>gaitAnalysis.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="gaitResults.resx">
+      <DependentUpon>gaitResults.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="loginForm.resx">
       <DependentUpon>loginForm.cs</DependentUpon>
     </EmbeddedResource>

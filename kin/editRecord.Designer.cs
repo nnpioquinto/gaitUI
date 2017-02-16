@@ -185,8 +185,7 @@
             this.gender_cbox.FormattingEnabled = true;
             this.gender_cbox.Items.AddRange(new object[] {
             "Female",
-            "Male",
-            "Others"});
+            "Male"});
             this.gender_cbox.Location = new System.Drawing.Point(133, 221);
             this.gender_cbox.Name = "gender_cbox";
             this.gender_cbox.Size = new System.Drawing.Size(121, 21);

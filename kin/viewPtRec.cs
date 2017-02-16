@@ -13,6 +13,7 @@ namespace kin
     public partial class viewPtRec : Form
     {
         Menu menu = new Menu();
+
         public viewPtRec()
         {
             InitializeComponent();
@@ -21,39 +22,43 @@ namespace kin
             BindingSource bindSource = new BindingSource();
             dataGrid.DataSource = bindSource;
             bindSource.DataSource = sysdb.retrieveData();
-            
         }
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-            menu.Show();
+            this.Hide();
+            menu.ShowDialog();
             this.Dispose();
         }
 
         private void viewHist_btn_Click(object sender, EventArgs e)
         {
             int ptID = (int)dataGrid.SelectedRows[0].Cells["patientID"].Value;
-            PtHistory ptHist = new PtHistory(ptID, this);
+
+            PtHistory ptHist = new PtHistory(ptID);
             this.Hide();
             ptHist.ShowDialog();
+            this.Dispose();
         }
 
         private void editPt_Btn_Click(object sender, EventArgs e)
         {
             int ptID = (int)dataGrid.SelectedRows[0].Cells["patientID"].Value;
-            editRecord editRec = new editRecord(ptID, this);
+
+            editRecord editRec = new editRecord(ptID);
             this.Hide();
             editRec.ShowDialog();
+            this.Dispose();
         }
 
         private void startBtn_Click(object sender, EventArgs e)
         {
             int ptID = (int)dataGrid.SelectedRows[0].Cells["patientID"].Value;
-            
+
             gaitAnalysis gait = new gaitAnalysis(ptID);
-            gait.Show();
-            this.Close();
+            this.Hide();
+            gait.ShowDialog();
+            this.Dispose();
         }
-        
     }
 }

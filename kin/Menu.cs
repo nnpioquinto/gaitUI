@@ -19,18 +19,27 @@ namespace kin
 
         private void createPtBtn_Click(object sender, EventArgs e)
         {
-            newRecord newRec = new newRecord(this);
-            newRec.Show();
             this.Hide();
+            newRecord newRec = new newRecord();
+            newRec.ShowDialog();
+            this.Close();
         }
 
         private void viewPtRecBtn_Click(object sender, EventArgs e)
         {
-            viewPtRec viewRec = new viewPtRec();
-
-            viewRec.Show();
             this.Hide();
-            
+            viewPtRec viewRec = new viewPtRec();
+            viewRec.ShowDialog();
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult result1 = MessageBox.Show("Are you sure to exit", "Confirmation", MessageBoxButtons.YesNo);
+            if (result1 == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }
