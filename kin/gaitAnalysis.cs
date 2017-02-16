@@ -27,15 +27,15 @@ namespace kin
         bool testStart = false;
 
         //Gait Parameters
-        double cadence = 0;             //What is this?
+        public double cadence = 0;             //What is this?
         public double stepLength = 0;          //Done               //
-        double stepTime = 0;            //Done          
-        double stepWidth = 0;           //What is this? 
+        public double stepTime = 0;            //Done          
+        public double stepWidth = 0;           //What is this? 
         public double stepFrequency = 0;       //Done              //
-        double stanceTime = 0;          //Done                     //
-        double strideLength = 0;        //Done                     //
+        public double stanceTime = 0;          //Done                     //
+        public double strideLength = 0;        //Done                     //
         public double strideVelocity = 0;      //Done (Edit)
-        double swingTime = 0;           //Done                     //
+        public double swingTime = 0;           //Done                     //
 
         double totalDistance = 0;
         double[] initialPoint = new double[3];
