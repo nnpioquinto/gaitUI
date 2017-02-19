@@ -99,5 +99,6 @@ namespace kin
             menu.ShowDialog();
             this.Dispose();
         }
+        
     }
 }

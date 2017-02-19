@@ -49,6 +49,7 @@
             // 
             // videoBox
             // 
+            this.videoBox.BackColor = System.Drawing.Color.White;
             this.videoBox.Location = new System.Drawing.Point(33, 28);
             this.videoBox.Name = "videoBox";
             this.videoBox.Size = new System.Drawing.Size(640, 480);
@@ -58,177 +59,192 @@
             // 
             // startBtn
             // 
-            this.startBtn.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.startBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.YellowGreen;
-            this.startBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.YellowGreen;
+            this.startBtn.BackColor = System.Drawing.Color.White;
+            this.startBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.startBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleGreen;
+            this.startBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.startBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.startBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startBtn.Font = new System.Drawing.Font("Cambria", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startBtn.Location = new System.Drawing.Point(828, 530);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(129, 43);
             this.startBtn.TabIndex = 1;
             this.startBtn.Text = "Start";
-            this.startBtn.UseVisualStyleBackColor = true;
+            this.startBtn.UseVisualStyleBackColor = false;
             this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
             // 
             // noKinectWarn
             // 
             this.noKinectWarn.AutoSize = true;
-            this.noKinectWarn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noKinectWarn.BackColor = System.Drawing.Color.White;
+            this.noKinectWarn.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noKinectWarn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.noKinectWarn.Location = new System.Drawing.Point(48, 66);
             this.noKinectWarn.Name = "noKinectWarn";
-            this.noKinectWarn.Size = new System.Drawing.Size(308, 31);
+            this.noKinectWarn.Size = new System.Drawing.Size(402, 39);
             this.noKinectWarn.TabIndex = 2;
             this.noKinectWarn.Text = "No Kinect Sensor found!";
             this.noKinectWarn.Visible = false;
             // 
             // stopBtn
             // 
-            this.stopBtn.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.stopBtn.BackColor = System.Drawing.Color.White;
+            this.stopBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.stopBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.IndianRed;
             this.stopBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
             this.stopBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.stopBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stopBtn.Font = new System.Drawing.Font("Cambria", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stopBtn.Location = new System.Drawing.Point(689, 530);
             this.stopBtn.Name = "stopBtn";
             this.stopBtn.Size = new System.Drawing.Size(129, 43);
             this.stopBtn.TabIndex = 3;
             this.stopBtn.Text = "Stop";
-            this.stopBtn.UseVisualStyleBackColor = true;
+            this.stopBtn.UseVisualStyleBackColor = false;
             this.stopBtn.Click += new System.EventHandler(this.stopBtn_Click);
             // 
             // timeLbl
             // 
             this.timeLbl.AutoSize = true;
-            this.timeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeLbl.BackColor = System.Drawing.Color.Transparent;
+            this.timeLbl.Font = new System.Drawing.Font("Cambria", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timeLbl.ForeColor = System.Drawing.Color.Black;
-            this.timeLbl.Location = new System.Drawing.Point(679, 363);
+            this.timeLbl.Location = new System.Drawing.Point(679, 382);
             this.timeLbl.Margin = new System.Windows.Forms.Padding(3);
             this.timeLbl.Name = "timeLbl";
-            this.timeLbl.Size = new System.Drawing.Size(63, 24);
+            this.timeLbl.Size = new System.Drawing.Size(87, 32);
             this.timeLbl.TabIndex = 4;
             this.timeLbl.Text = "Time: ";
             // 
             // stepLbl
             // 
             this.stepLbl.AutoSize = true;
-            this.stepLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stepLbl.BackColor = System.Drawing.Color.Transparent;
+            this.stepLbl.Font = new System.Drawing.Font("Cambria", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stepLbl.ForeColor = System.Drawing.Color.Black;
-            this.stepLbl.Location = new System.Drawing.Point(679, 333);
+            this.stepLbl.Location = new System.Drawing.Point(679, 344);
             this.stepLbl.Margin = new System.Windows.Forms.Padding(3);
             this.stepLbl.Name = "stepLbl";
-            this.stepLbl.Size = new System.Drawing.Size(67, 24);
+            this.stepLbl.Size = new System.Drawing.Size(90, 32);
             this.stepLbl.TabIndex = 5;
             this.stepLbl.Text = "Steps: ";
             // 
             // skelLbl
             // 
             this.skelLbl.AutoSize = true;
-            this.skelLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.skelLbl.BackColor = System.Drawing.Color.Transparent;
+            this.skelLbl.Font = new System.Drawing.Font("Cambria", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.skelLbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.skelLbl.Location = new System.Drawing.Point(679, 286);
+            this.skelLbl.Location = new System.Drawing.Point(679, 295);
             this.skelLbl.Margin = new System.Windows.Forms.Padding(3);
             this.skelLbl.Name = "skelLbl";
-            this.skelLbl.Size = new System.Drawing.Size(63, 24);
+            this.skelLbl.Size = new System.Drawing.Size(87, 32);
             this.skelLbl.TabIndex = 6;
             this.skelLbl.Text = "Body: ";
             // 
             // backBtn
             // 
-            this.backBtn.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.backBtn.BackColor = System.Drawing.Color.White;
+            this.backBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.backBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightCoral;
             this.backBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightCoral;
             this.backBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.backBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backBtn.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.backBtn.Location = new System.Drawing.Point(33, 537);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(110, 36);
             this.backBtn.TabIndex = 7;
             this.backBtn.Text = "Back";
-            this.backBtn.UseVisualStyleBackColor = true;
+            this.backBtn.UseVisualStyleBackColor = false;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
             // feetLbl
             // 
             this.feetLbl.AutoSize = true;
-            this.feetLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.feetLbl.BackColor = System.Drawing.Color.Transparent;
+            this.feetLbl.Font = new System.Drawing.Font("Cambria", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.feetLbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.feetLbl.Location = new System.Drawing.Point(679, 256);
             this.feetLbl.Margin = new System.Windows.Forms.Padding(3);
             this.feetLbl.Name = "feetLbl";
-            this.feetLbl.Size = new System.Drawing.Size(53, 24);
+            this.feetLbl.Size = new System.Drawing.Size(70, 32);
             this.feetLbl.TabIndex = 8;
             this.feetLbl.Text = "Feet:";
             // 
             // sLenLbl
             // 
             this.sLenLbl.AutoSize = true;
-            this.sLenLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.sLenLbl.ForeColor = System.Drawing.Color.Green;
+            this.sLenLbl.BackColor = System.Drawing.Color.Transparent;
+            this.sLenLbl.Font = new System.Drawing.Font("Cambria", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sLenLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(66)))), ((int)(((byte)(0)))));
             this.sLenLbl.Location = new System.Drawing.Point(679, 28);
-            this.sLenLbl.Margin = new System.Windows.Forms.Padding(5);
+            this.sLenLbl.Margin = new System.Windows.Forms.Padding(3);
             this.sLenLbl.Name = "sLenLbl";
-            this.sLenLbl.Size = new System.Drawing.Size(121, 24);
+            this.sLenLbl.Size = new System.Drawing.Size(163, 32);
             this.sLenLbl.TabIndex = 9;
             this.sLenLbl.Text = "Step Length: ";
             // 
             // sFreqLbl
             // 
             this.sFreqLbl.AutoSize = true;
-            this.sFreqLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.sFreqLbl.ForeColor = System.Drawing.Color.Green;
-            this.sFreqLbl.Location = new System.Drawing.Point(681, 96);
-            this.sFreqLbl.Margin = new System.Windows.Forms.Padding(5);
+            this.sFreqLbl.BackColor = System.Drawing.Color.Transparent;
+            this.sFreqLbl.Font = new System.Drawing.Font("Cambria", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sFreqLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(66)))), ((int)(((byte)(0)))));
+            this.sFreqLbl.Location = new System.Drawing.Point(679, 104);
+            this.sFreqLbl.Margin = new System.Windows.Forms.Padding(3);
             this.sFreqLbl.Name = "sFreqLbl";
-            this.sFreqLbl.Size = new System.Drawing.Size(150, 24);
+            this.sFreqLbl.Size = new System.Drawing.Size(199, 32);
             this.sFreqLbl.TabIndex = 10;
             this.sFreqLbl.Text = "Step Frequency:";
             // 
             // swingTimeLbl
             // 
             this.swingTimeLbl.AutoSize = true;
-            this.swingTimeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.swingTimeLbl.ForeColor = System.Drawing.Color.Green;
-            this.swingTimeLbl.Location = new System.Drawing.Point(681, 164);
-            this.swingTimeLbl.Margin = new System.Windows.Forms.Padding(5);
+            this.swingTimeLbl.BackColor = System.Drawing.Color.Transparent;
+            this.swingTimeLbl.Font = new System.Drawing.Font("Cambria", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.swingTimeLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(66)))), ((int)(((byte)(0)))));
+            this.swingTimeLbl.Location = new System.Drawing.Point(679, 180);
+            this.swingTimeLbl.Margin = new System.Windows.Forms.Padding(3);
             this.swingTimeLbl.Name = "swingTimeLbl";
-            this.swingTimeLbl.Size = new System.Drawing.Size(125, 24);
+            this.swingTimeLbl.Size = new System.Drawing.Size(169, 32);
             this.swingTimeLbl.TabIndex = 11;
             this.swingTimeLbl.Text = "Swing Time:  ";
             // 
             // StanceTimeLbl
             // 
             this.StanceTimeLbl.AutoSize = true;
-            this.StanceTimeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.StanceTimeLbl.ForeColor = System.Drawing.Color.Green;
-            this.StanceTimeLbl.Location = new System.Drawing.Point(681, 198);
-            this.StanceTimeLbl.Margin = new System.Windows.Forms.Padding(5);
+            this.StanceTimeLbl.BackColor = System.Drawing.Color.Transparent;
+            this.StanceTimeLbl.Font = new System.Drawing.Font("Cambria", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StanceTimeLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(66)))), ((int)(((byte)(0)))));
+            this.StanceTimeLbl.Location = new System.Drawing.Point(679, 218);
+            this.StanceTimeLbl.Margin = new System.Windows.Forms.Padding(3);
             this.StanceTimeLbl.Name = "StanceTimeLbl";
-            this.StanceTimeLbl.Size = new System.Drawing.Size(131, 24);
+            this.StanceTimeLbl.Size = new System.Drawing.Size(174, 32);
             this.StanceTimeLbl.TabIndex = 12;
             this.StanceTimeLbl.Text = "Stance Time:  ";
             // 
             // srLenLbl
             // 
             this.srLenLbl.AutoSize = true;
-            this.srLenLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.srLenLbl.ForeColor = System.Drawing.Color.Green;
-            this.srLenLbl.Location = new System.Drawing.Point(679, 62);
-            this.srLenLbl.Margin = new System.Windows.Forms.Padding(5);
+            this.srLenLbl.BackColor = System.Drawing.Color.Transparent;
+            this.srLenLbl.Font = new System.Drawing.Font("Cambria", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.srLenLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(66)))), ((int)(((byte)(0)))));
+            this.srLenLbl.Location = new System.Drawing.Point(679, 66);
+            this.srLenLbl.Margin = new System.Windows.Forms.Padding(3);
             this.srLenLbl.Name = "srLenLbl";
-            this.srLenLbl.Size = new System.Drawing.Size(131, 24);
+            this.srLenLbl.Size = new System.Drawing.Size(182, 32);
             this.srLenLbl.TabIndex = 13;
             this.srLenLbl.Text = "Stride Length: ";
             // 
             // srVeloLbl
             // 
             this.srVeloLbl.AutoSize = true;
-            this.srVeloLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.srVeloLbl.ForeColor = System.Drawing.Color.Green;
-            this.srVeloLbl.Location = new System.Drawing.Point(679, 130);
-            this.srVeloLbl.Margin = new System.Windows.Forms.Padding(5);
+            this.srVeloLbl.BackColor = System.Drawing.Color.Transparent;
+            this.srVeloLbl.Font = new System.Drawing.Font("Cambria", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.srVeloLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(66)))), ((int)(((byte)(0)))));
+            this.srVeloLbl.Location = new System.Drawing.Point(679, 142);
+            this.srVeloLbl.Margin = new System.Windows.Forms.Padding(3);
             this.srVeloLbl.Name = "srVeloLbl";
-            this.srVeloLbl.Size = new System.Drawing.Size(139, 24);
+            this.srVeloLbl.Size = new System.Drawing.Size(194, 32);
             this.srVeloLbl.TabIndex = 14;
             this.srVeloLbl.Text = "Stride Velocity: ";
             // 
@@ -236,6 +252,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::kin.Properties.Resources.bg5;
             this.ClientSize = new System.Drawing.Size(969, 585);
             this.Controls.Add(this.srVeloLbl);
             this.Controls.Add(this.srLenLbl);

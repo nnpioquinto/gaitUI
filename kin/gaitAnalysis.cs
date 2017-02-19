@@ -651,7 +651,9 @@ namespace kin
             DialogResult result = MessageBox.Show("Are you sure to go back to records?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if(result == DialogResult.Yes)
             {
-                sensor.Stop();
+                if (sensor != null)
+                    sensor.Stop();
+
                 sensor = null;
                 this.Hide();
                 viewPtRec view = new viewPtRec();
